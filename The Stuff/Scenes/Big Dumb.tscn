@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 223.0
+margin_top = 48.0
+margin_right = 571.0
+margin_bottom = 133.0
+text = "Boom ska(t)"
