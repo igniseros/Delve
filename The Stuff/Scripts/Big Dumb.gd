@@ -12,7 +12,7 @@ func _ready(): #this is an example script for you berkley!
 func _process(delta): #runs every frame with delta being the time between frames
 	totalTime += delta #counts up like a stop watch
 	var array = ["Ska(t)","Bam","Pow","Bing"] #just some words
-	var label = get_tree().get_root().get_node("Node2D/Label") #gets label node
+	var label : Label = get_tree().get_root().get_node("Node2D/Label") #gets label node
 	if (totalTime >= threshholdTime): #runs inside of total time has passed the threshhold time
 		i+= 1 #counts up i
 		if (i >= array.size()): 
@@ -20,7 +20,6 @@ func _process(delta): #runs every frame with delta being the time between frames
 		label.set_text("Boom " + array[i]) #sets text to index i in Array array (this line is not in above if statement)
 		totalTime = 0 # resets total time
 		
-	
 	
 	#These are for your viewing pleasure
 	print(label.get_path())
