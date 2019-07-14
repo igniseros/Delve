@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerGlobal="*res://Scripts/Global Scripts/PlayerGlobal.gd"
+Global="*res://Scripts/Global Scripts/Global.gd"
+Items="*res://Scripts/Global Scripts/Items.gd"
 
 [rendering]
 
