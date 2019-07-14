@@ -1,0 +1,80 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scripts/Player/PlayerBase.gd" type="Script" id=1]
+[ext_resource path="res://Art/Player/Idle/Player_Idle1.png" type="Texture" id=2]
+[ext_resource path="res://Art/Player/Idle/Player_Idle2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Player/Idle/Player_Idle3.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/Idle/Player_Idle4.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left1.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left2.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down1.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down2.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up1.png" type="Texture" id=10]
+[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up2.png" type="Texture" id=11]
+[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right1.png" type="Texture" id=12]
+[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right2.png" type="Texture" id=13]
+[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left1.png" type="Texture" id=14]
+[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left2.png" type="Texture" id=15]
+[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left1.png" type="Texture" id=16]
+[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left2.png" type="Texture" id=17]
+[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right1.png" type="Texture" id=18]
+[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right2.png" type="Texture" id=19]
+[ext_resource path="res://Art/Player/Walking Up Right/Player_Walking_Up_Right1.png" type="Texture" id=20]
+[ext_resource path="res://Art/Player/Walking Up Right/Player_Walking_Up_Right2.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "WL",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "WD",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "WU",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "WR",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "WDL",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "WUL",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "WDR",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "WUR",
+"speed": 4.0
+} ]
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Img" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "WUR"
+playing = true

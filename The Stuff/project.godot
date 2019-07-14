@@ -19,6 +19,10 @@ config/name="Delve"
 run/main_scene="res://Scenes/Big Dumb.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerGlobal="*res://Scripts/Global Scripts/PlayerGlobal.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
