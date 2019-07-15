@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var ani = get_node("Img") #get animated sprite node
+onready var ani = get_node("Body/Img") #get animated sprite node
 onready var player = get_node("/root/PlayerGlobal")
-onready var weapon = get_node("Weapon")
+onready var weapon = get_node("Body/Weapon")
 onready var body = get_node("Body")
 
 onready var WalkSpeed = player.get_WalkSpeed()
@@ -28,7 +28,8 @@ func _process(delta):
 	attack(delta)
 
 func movement(delta):
-	player.set_PlayerPosition(position)
+	var oldPos = player.get_PlayerPosition()
+	player.set_PlayerPosition(body.position)
 	#-----------------------
 	#movement and animations 
 	#-----------------------
@@ -51,38 +52,34 @@ func movement(delta):
 	
 	#[do stuff with the booleans]
 	if (w and not (a or s or d)):
-		
-		position.y -= WalkSpeed * delta
+		body.move_and_slide(Vector2(0,-WalkSpeed))
 		ani.set_animation("WU")
 	if (a and not (w or s or d)):
-		position.x -= WalkSpeed * delta
+		body.move_and_slide(Vector2(-WalkSpeed,0))
 		ani.set_animation("WL")
 	if (s and not (w or a or d)):
-		position.y += WalkSpeed * delta
+		body.move_and_slide(Vector2(0,WalkSpeed))
 		ani.set_animation("WD")
 	if (d and not (w or a or s)):
-		position.x += WalkSpeed * delta
+		body.move_and_slide(Vector2(WalkSpeed,0))
 		ani.set_animation("WR")
 	#diaganals
 	if (w and d and not (a or s)):
-		position.x += WalkSpeed * (1 / sqrt(2)) * delta
-		position.y -= WalkSpeed * (1 / sqrt(2)) * delta
+		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
 		ani.set_animation("WUR")
 	if (w and a and not (d or s)):
-		position.x -= WalkSpeed * (1 / sqrt(2)) * delta
-		position.y -= WalkSpeed * (1 / sqrt(2)) * delta
+		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
 		ani.set_animation("WUL")
 	if (s and d and not (a or w)):
-		position.x += WalkSpeed * (1 / sqrt(2)) * delta
-		position.y += WalkSpeed * (1 / sqrt(2)) * delta
+		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
 		ani.set_animation("WDR")
 	if (s and a and not (d or w)):
-		position.x -= WalkSpeed * (1 / sqrt(2)) * delta
-		position.y += WalkSpeed * (1 / sqrt(2)) * delta
+		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
 		ani.set_animation("WDL")
 	#if not moving go to idle animation
-	if (not w and not a and not s and not d):
+	if ((not w and not a and not s and not d) or (oldPos == player.get_PlayerPosition())):
 		ani.set_animation("idle")
+	
 
 func _unhandled_key_input(event):
 	#search for keys being pressed and send them to the shoot function

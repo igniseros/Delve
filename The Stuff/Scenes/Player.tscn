@@ -88,7 +88,6 @@ shape = SubResource( 2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="Tween" type="Tween" parent="Body"]
