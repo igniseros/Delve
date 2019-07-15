@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pistol_Idle2.png-d89a6e28c7db92f1c5a71978dcf747c7.stex"
+path="res://.import/Pistol_Idle6.png-a389e35f2c910c0c03ae088867ac7785.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Equiptment/Pistol/Pistol_Idle2.png"
-dest_files=[ "res://.import/Pistol_Idle2.png-d89a6e28c7db92f1c5a71978dcf747c7.stex" ]
+source_file="res://Art/Equiptment/Pistol/Idle/Pistol_Idle6.png"
+dest_files=[ "res://.import/Pistol_Idle6.png-a389e35f2c910c0c03ae088867ac7785.stex" ]
 
 [params]
 

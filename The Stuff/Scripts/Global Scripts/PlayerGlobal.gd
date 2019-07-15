@@ -3,6 +3,7 @@ extends Node
 var WalkSpeed = 100
 var ShotFreqThresh = 10
 var PlayerPosition = Vector2(0,0)
+var Equipment = {"Arm":0,"Legs":-1,"Head":-1,"Body":-1,"Misc":-1}
 
 #---------------
 #Gets and sets

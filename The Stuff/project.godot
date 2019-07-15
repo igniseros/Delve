@@ -25,6 +25,15 @@ PlayerGlobal="*res://Scripts/Global Scripts/PlayerGlobal.gd"
 Global="*res://Scripts/Global Scripts/Global.gd"
 Items="*res://Scripts/Global Scripts/Items.gd"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/borderless=true
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

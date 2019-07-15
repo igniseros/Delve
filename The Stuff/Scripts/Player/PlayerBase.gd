@@ -4,22 +4,26 @@ onready var ani = get_node("Body/Img") #get animated sprite node
 onready var player = get_node("/root/PlayerGlobal")
 onready var weapon = get_node("Body/Weapon")
 onready var body = get_node("Body")
+onready var ItemsGlobal = get_node("/root/Items")
 
 onready var WalkSpeed = player.get_WalkSpeed()
 onready var ShotFreqThresh = player.get_ShotFreqThresh()
+
+var nextAnim = "idle3"
 
 var w = false 
 var a = false
 var s = false
 var d = false
 
-var recentShootKey = "left"
+var recentShootKey = "right"
 var up = false
 var left = false
 var down = false
 var right = false
 
 func _ready():
+	updateEquipment()
 	player.set_PlayerPosition(position)
 	set_process(true)
 
@@ -53,33 +57,35 @@ func movement(delta):
 	#[do stuff with the booleans]
 	if (w and not (a or s or d)):
 		body.move_and_slide(Vector2(0,-WalkSpeed))
-		ani.set_animation("WU")
+		nextAnim = "WU"
 	if (a and not (w or s or d)):
 		body.move_and_slide(Vector2(-WalkSpeed,0))
-		ani.set_animation("WL")
+		nextAnim = "WL"
 	if (s and not (w or a or d)):
 		body.move_and_slide(Vector2(0,WalkSpeed))
-		ani.set_animation("WD")
+		nextAnim = "WD"
 	if (d and not (w or a or s)):
 		body.move_and_slide(Vector2(WalkSpeed,0))
-		ani.set_animation("WR")
+		nextAnim = "WR"
 	#diaganals
 	if (w and d and not (a or s)):
 		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
-		ani.set_animation("WUR")
+		nextAnim = "WUR"
 	if (w and a and not (d or s)):
 		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
-		ani.set_animation("WUL")
+		nextAnim = "WUL"
 	if (s and d and not (a or w)):
 		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
-		ani.set_animation("WDR")
+		nextAnim = "WDR"
 	if (s and a and not (d or w)):
 		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
-		ani.set_animation("WDL")
+		nextAnim = "WDL"
 	#if not moving go to idle animation
 	if ((not w and not a and not s and not d) or (oldPos == player.get_PlayerPosition())):
-		ani.set_animation("idle")
+		nextAnim = "idle3"
 	
+	if (ani.frame == 0):
+		ani.set_animation(nextAnim)
 
 func _unhandled_key_input(event):
 	#search for keys being pressed and send them to the shoot function
@@ -93,6 +99,7 @@ func _unhandled_key_input(event):
 		recentShootKey = "right"
 
 func attack(delta):
+	
 	#------
 	#Attack
 	#------
@@ -116,3 +123,12 @@ func attack(delta):
 	if (recentShootKey == "right"):
 		right = true
 		weapon.rotation_degrees = 0
+
+func updateEquipment():
+	if player.Equipment["Arm"] != -1:
+		for child in weapon.get_children(): #remove any previus weapon
+			weapon.remove_child(child)
+		#add new one
+		var newWepScn = load(Items.Arms[player.Equipment["Arm"]]) #load weapon scene
+		var newWepNode = newWepScn.instance() #instance weapon
+		weapon.add_child(newWepNode) #attach weapon to weapon node

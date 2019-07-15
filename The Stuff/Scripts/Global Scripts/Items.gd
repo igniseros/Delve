@@ -1,3 +1,3 @@
 extends Node
 
-var arms = ["res://Scenes/Weapons/Pistol.tscn"]
+var Arms = ["res://Scenes/Weapons/Pistol.tscn"]
