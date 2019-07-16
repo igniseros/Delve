@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Weapons/Pistol.gd" type="Script" id=1]
 [ext_resource path="res://Art/Equiptment/Pistol/Idle/Pistol_Idle1.png" type="Texture" id=2]
@@ -7,7 +7,14 @@
 [ext_resource path="res://Art/Equiptment/Pistol/Idle/Pistol_Idle4.png" type="Texture" id=5]
 [ext_resource path="res://Art/Equiptment/Pistol/Idle/Pistol_Idle5.png" type="Texture" id=6]
 [ext_resource path="res://Art/Equiptment/Pistol/Idle/Pistol_Idle6.png" type="Texture" id=7]
-[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=8]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot1.png" type="Texture" id=8]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot2.png" type="Texture" id=9]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot3.png" type="Texture" id=10]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot4.png" type="Texture" id=11]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot5.png" type="Texture" id=12]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot6.png" type="Texture" id=13]
+[ext_resource path="res://Art/Effects/Gunshot 1/Gunshot7.png" type="Texture" id=14]
+[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,6 +22,14 @@ animations = [ {
 "loop": true,
 "name": "idle",
 "speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), null ],
+"loop": false,
+"name": "shot",
+"speed": 20.0
 } ]
 
 [node name="Pistol" type="Node2D"]
@@ -25,11 +40,37 @@ show_behind_parent = true
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2( 30, 0 )
+
+[node name="Effect" type="AnimatedSprite" parent="Exit"]
+scale = Vector2( 2, 2 )
+z_index = -2
+frames = SubResource( 2 )
+animation = "shot"
+frame = 7
+playing = true
+offset = Vector2( 9, 0 )
+
+[node name="BangLight" type="Light2D" parent="Exit"]
+visible = false
+texture = ExtResource( 15 )
+energy = 2.0
+shadow_enabled = true
+
+[node name="BangLight2" type="Light2D" parent="Exit/BangLight"]
+texture = ExtResource( 15 )
+texture_scale = 10.0
+energy = 0.5
+shadow_enabled = true
+
 [node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 8 )
+texture = ExtResource( 15 )
 texture_scale = 0.5
 color = Color( 0.984314, 0.0313726, 0.0313726, 1 )
 energy = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

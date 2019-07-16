@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Light1.png-f7902238a6bb92f0a406a6f478fc4ee5.stex"
+path="res://.import/Bullet.png-0a008c42e99aa8298892d72652f45c80.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Equiptment/Light1.png"
-dest_files=[ "res://.import/Light1.png-f7902238a6bb92f0a406a6f478fc4ee5.stex" ]
+source_file="res://Art/Equiptment/Pistol/Bullet.png"
+dest_files=[ "res://.import/Bullet.png-0a008c42e99aa8298892d72652f45c80.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

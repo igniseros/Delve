@@ -1,13 +1,12 @@
 extends Node2D
 
-onready var ani = get_node("Body/Img") #get animated sprite node
+onready var ani = get_node("PlayerBody/Img") #get animated sprite node
 onready var player = get_node("/root/PlayerGlobal")
-onready var weapon = get_node("Body/Weapon")
-onready var body = get_node("Body")
+onready var weapon = get_node("PlayerBody/Img/Weapon")
+onready var body = get_node("PlayerBody")
 onready var ItemsGlobal = get_node("/root/Items")
 
-onready var WalkSpeed = player.get_WalkSpeed()
-onready var ShotFreqThresh = player.get_ShotFreqThresh()
+onready var WalkSpeed = player.WalkSpeed
 
 var nextAnim = "idle3"
 
@@ -24,7 +23,7 @@ var right = false
 
 func _ready():
 	updateEquipment()
-	player.set_PlayerPosition(position)
+	player.PlayerPosition = position
 	set_process(true)
 
 func _process(delta):
@@ -32,8 +31,8 @@ func _process(delta):
 	attack(delta)
 
 func movement(delta):
-	var oldPos = player.get_PlayerPosition()
-	player.set_PlayerPosition(body.position)
+	var oldPos = player.PlayerPosition
+	player.PlayerPosition = body.position
 	#-----------------------
 	#movement and animations 
 	#-----------------------
@@ -81,25 +80,26 @@ func movement(delta):
 		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
 		nextAnim = "WDL"
 	#if not moving go to idle animation
-	if ((not w and not a and not s and not d) or (oldPos == player.get_PlayerPosition())):
+	if ((not w and not a and not s and not d) or (oldPos == player.PlayerPosition)):
 		nextAnim = "idle3"
 	
 	if (ani.frame == 0):
 		ani.set_animation(nextAnim)
 
-func _unhandled_key_input(event):
+func _input(event):
 	#search for keys being pressed and send them to the shoot function
-	if event.pressed and event.scancode == KEY_UP:
-		recentShootKey = "up"
-	if event.pressed and event.scancode == KEY_DOWN:
-		recentShootKey ="down"
-	if event.pressed and event.scancode == KEY_LEFT:
-		recentShootKey ="left"
-	if event.pressed and event.scancode == KEY_RIGHT:
-		recentShootKey = "right"
+	if (event is InputEventKey):
+		if event.pressed and event.scancode == KEY_UP:
+			recentShootKey = "up"
+		if event.pressed and event.scancode == KEY_DOWN:
+			recentShootKey ="down"
+		if event.pressed and event.scancode == KEY_LEFT:
+			recentShootKey ="left"
+		if event.pressed and event.scancode == KEY_RIGHT:
+			recentShootKey = "right"
+	
 
 func attack(delta):
-	
 	#------
 	#Attack
 	#------
@@ -110,25 +110,33 @@ func attack(delta):
 	down = false
 	right = false
 	
+	var dir = Vector2(0,0);
+	
 	#[recheck boolean variables]
 	if (recentShootKey == "up"):
 		up = true
 		weapon.rotation_degrees = -90
+		dir.y = -1
 	if (recentShootKey == "left"):
 		left = true
 		weapon.rotation_degrees = 180
+		dir.x = -1
 	if (recentShootKey == "down"):
 		down = true
 		weapon.rotation_degrees = 90
+		dir.y = 1
 	if (recentShootKey == "right"):
 		right = true
 		weapon.rotation_degrees = 0
+		dir.x = 1
+	if (Input.is_key_pressed(KEY_SPACE)):
+		weapon.get_children().front().attemptAttack(dir)
 
 func updateEquipment():
 	if player.Equipment["Arm"] != -1:
 		for child in weapon.get_children(): #remove any previus weapon
 			weapon.remove_child(child)
 		#add new one
-		var newWepScn = load(Items.Arms[player.Equipment["Arm"]]) #load weapon scene
+		var newWepScn = load(ItemsGlobal.Arms[player.Equipment["Arm"]]) #load weapon scene
 		var newWepNode = newWepScn.instance() #instance weapon
 		weapon.add_child(newWepNode) #attach weapon to weapon node

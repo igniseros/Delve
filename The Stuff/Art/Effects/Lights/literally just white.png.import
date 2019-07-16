@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gunshot7.png-944c60f8fbdf466c7e44fcfb79e54814.stex"
+path="res://.import/literally just white.png-2ae74bb48d3b36059e5547b4bd7830fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Effects/Gunshot 1/Gunshot7.png"
-dest_files=[ "res://.import/Gunshot7.png-944c60f8fbdf466c7e44fcfb79e54814.stex" ]
+source_file="res://Art/Effects/Lights/literally just white.png"
+dest_files=[ "res://.import/literally just white.png-2ae74bb48d3b36059e5547b4bd7830fc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
