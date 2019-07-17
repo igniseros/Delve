@@ -15,6 +15,7 @@ func timeToGo(object):
 	
 	if str(object.get_parent().name).split("_")[0] == "Monster":
 		object.get_parent().takeHit(shotFrom)
+		get_parent().queue_free()
 	
 	
 	if object.name != "PlayerBody" and object.get_parent().name != "Bullet":

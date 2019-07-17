@@ -3,7 +3,6 @@ extends Node2D
 
 onready var bullet = load("res://Scenes/Weapons/Bullet.tscn")
 var bang = false
-var oBang = false
 
 func _ready():
 	$Timer.wait_time = 1.0 / $"/root/Items".ArmData[0]["ATKSPD"] #set attack speed based on item data
@@ -38,8 +37,10 @@ func attemptAttack(Direction : Vector2, startP : Vector2 = $Exit.global_position
 func _process(delta):
 	if (bang == true) and ($Exit/BangLight.visible == false):
 		$Exit/BangLight.visible = true
-	else:
+		$BTime.start()
+		bang = false
+	
+	if ($BTime.time_left == 0):
 		$Exit/BangLight.visible = false
-		bang  = false
 		
 	

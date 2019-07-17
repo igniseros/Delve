@@ -4,6 +4,7 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/brightness = 1.5
+shader_param/brightness = 2.0
 shader_param/contrast = 1.0
 shader_param/saturation = 1.0
+shader_param/enabled = true

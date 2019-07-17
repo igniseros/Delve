@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Weapons/Pistol.gd" type="Script" id=1]
 [ext_resource path="res://Art/Equiptment/Pistol/Idle/Pistol_Idle1.png" type="Texture" id=2]
@@ -14,7 +14,8 @@
 [ext_resource path="res://Art/Effects/Gunshot 1/Gunshot5.png" type="Texture" id=12]
 [ext_resource path="res://Art/Effects/Gunshot 1/Gunshot6.png" type="Texture" id=13]
 [ext_resource path="res://Art/Effects/Gunshot 1/Gunshot7.png" type="Texture" id=14]
-[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=15]
+[ext_resource path="res://Art/Effects/Lights/pollen.png" type="Texture" id=15]
+[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,6 +41,7 @@ show_behind_parent = true
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 5
 playing = true
 
 [node name="Exit" type="Node2D" parent="."]
@@ -55,22 +57,27 @@ playing = true
 offset = Vector2( 9, 0 )
 
 [node name="BangLight" type="Light2D" parent="Exit"]
-visible = false
 texture = ExtResource( 15 )
-energy = 2.0
+texture_scale = 3.0
+color = Color( 0.933333, 0.14902, 0.14902, 1 )
+energy = 3.0
 shadow_enabled = true
 
 [node name="BangLight2" type="Light2D" parent="Exit/BangLight"]
-texture = ExtResource( 15 )
-texture_scale = 10.0
-energy = 0.5
+texture = ExtResource( 16 )
+texture_scale = 15.0
+color = Color( 0.835294, 0.337255, 0.282353, 1 )
 shadow_enabled = true
 
 [node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 texture_scale = 0.5
 color = Color( 0.984314, 0.0313726, 0.0313726, 1 )
 energy = 0.5
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BTime" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true

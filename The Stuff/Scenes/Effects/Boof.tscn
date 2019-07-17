@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Effects/Particles/Boof.tres" type="Material" id=1]
+[ext_resource path="res://Scripts/Effects/Boof.gd" type="Script" id=2]
+
+[node name="Particles2D" type="Particles2D"]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 0.8
+local_coords = false
+process_material = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]

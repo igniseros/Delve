@@ -8,6 +8,8 @@ onready var ItemsGlobal = get_node("/root/Items")
 
 onready var WalkSpeed = player.WalkSpeed
 
+var boofScene = load("res://Scenes/Effects/Boof.tscn")
+
 var nextAnim = "idle3"
 
 var w = false 
@@ -22,17 +24,19 @@ var down = false
 var right = false
 
 func _ready():
+	$BoofingTimer.stop()
+	$BoofTimer.start()
 	updateEquipment()
-	player.PlayerPosition = position
+	player.PlayerPosition = body.global_position
 	set_process(true)
 
 func _process(delta):
-	movement(delta)
-	attack(delta)
+	movement()
+	attack()
 
-func movement(delta):
+func movement():
 	var oldPos = player.PlayerPosition
-	player.PlayerPosition = body.position
+	player.PlayerPosition = body.global_position
 	#-----------------------
 	#movement and animations 
 	#-----------------------
@@ -42,7 +46,7 @@ func movement(delta):
 	a = false
 	s = false
 	d = false
-	
+	var finalMove := Vector2(0,0)
 	#[recheck boolean variables]
 	if (Input.is_key_pressed(KEY_D)):
 		d = true
@@ -55,30 +59,44 @@ func movement(delta):
 	
 	#[do stuff with the booleans]
 	if (w and not (a or s or d)):
-		body.move_and_slide(Vector2(0,-WalkSpeed))
+		finalMove = Vector2(0,-WalkSpeed)
 		nextAnim = "WU"
 	if (a and not (w or s or d)):
-		body.move_and_slide(Vector2(-WalkSpeed,0))
+		finalMove = Vector2(-WalkSpeed,0)
 		nextAnim = "WL"
 	if (s and not (w or a or d)):
-		body.move_and_slide(Vector2(0,WalkSpeed))
+		finalMove = Vector2(0,WalkSpeed)
 		nextAnim = "WD"
 	if (d and not (w or a or s)):
-		body.move_and_slide(Vector2(WalkSpeed,0))
+		finalMove = Vector2(WalkSpeed,0)
 		nextAnim = "WR"
 	#diaganals
 	if (w and d and not (a or s)):
-		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
+		finalMove = Vector2(WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2)))
 		nextAnim = "WUR"
 	if (w and a and not (d or s)):
-		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2))))
+		finalMove = Vector2(-WalkSpeed * (1 / sqrt(2)),-WalkSpeed * (1 / sqrt(2)))
 		nextAnim = "WUL"
 	if (s and d and not (a or w)):
-		body.move_and_slide(Vector2(WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
+		finalMove = Vector2(WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2)))
 		nextAnim = "WDR"
 	if (s and a and not (d or w)):
-		body.move_and_slide(Vector2(-WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2))))
+		finalMove = Vector2(-WalkSpeed * (1 / sqrt(2)),WalkSpeed * (1 / sqrt(2)))
 		nextAnim = "WDL"
+	#Check boofality
+	var boofFactor = 1;
+	if (Input.is_key_pressed(KEY_SHIFT) and ($BoofTimer.time_left == 0)) and (w or a or s or d):
+		$BoofTimer.start()
+		
+		var boofInstance : Particles2D = boofScene.instance()
+		boofInstance.emitting = true
+		boofInstance.rotation = finalMove.angle()
+		$PlayerBody/Img.add_child(boofInstance)
+		
+		$BoofingTimer.start(.1)
+	if ($BoofingTimer.time_left != 0):
+		boofFactor *= player.boofFactor
+	body.move_and_slide(finalMove * boofFactor)
 	#if not moving go to idle animation
 	if ((not w and not a and not s and not d) or (oldPos == player.PlayerPosition)):
 		nextAnim = "idle3"
@@ -99,7 +117,7 @@ func _input(event):
 			recentShootKey = "right"
 	
 
-func attack(delta):
+func attack():
 	#------
 	#Attack
 	#------

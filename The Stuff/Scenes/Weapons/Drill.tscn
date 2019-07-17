@@ -1,0 +1,43 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scenes/Weapons/Drill.gd" type="Script" id=1]
+[ext_resource path="res://Art/Equiptment/Drill/Drill1.png" type="Texture" id=2]
+[ext_resource path="res://Art/Equiptment/Drill/Drill2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Equiptment/Drill/Drill3.png" type="Texture" id=4]
+[ext_resource path="res://Art/Equiptment/Drill/Drill4.png" type="Texture" id=5]
+[ext_resource path="res://Art/Equiptment/Drill/Drill5.png" type="Texture" id=6]
+[ext_resource path="res://Art/Equiptment/Drill/Drill6.png" type="Texture" id=7]
+[ext_resource path="res://Art/Equiptment/Drill/Drill7.png" type="Texture" id=8]
+[ext_resource path="res://Art/Equiptment/Drill/Drill8.png" type="Texture" id=9]
+[ext_resource path="res://Art/Equiptment/Drill/Drill9.png" type="Texture" id=10]
+[ext_resource path="res://Art/Equiptment/Drill/Drill10.png" type="Texture" id=11]
+[ext_resource path="res://Art/Equiptment/Drill/Drill11.png" type="Texture" id=12]
+[ext_resource path="res://Art/Equiptment/Drill/Drill12.png" type="Texture" id=13]
+[ext_resource path="res://Art/Equiptment/Drill/Drill13.png" type="Texture" id=14]
+[ext_resource path="res://Art/Equiptment/Drill/Drill14.png" type="Texture" id=15]
+[ext_resource path="res://Art/Equiptment/Drill/Drill15.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38, 7 )
+
+[node name="Drill" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 14
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 24, 0 )
+shape = SubResource( 2 )
