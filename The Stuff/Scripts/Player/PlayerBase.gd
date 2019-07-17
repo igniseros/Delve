@@ -24,6 +24,7 @@ var down = false
 var right = false
 
 func _ready():
+	player.player = self
 	$BoofingTimer.stop()
 	$BoofTimer.start()
 	updateEquipment()
@@ -86,6 +87,7 @@ func movement():
 	#Check boofality
 	var boofFactor = 1;
 	if (Input.is_key_pressed(KEY_SHIFT) and ($BoofTimer.time_left == 0)) and (w or a or s or d):
+		$PlayerBody/BoofSound.play()
 		$BoofTimer.start()
 		
 		var boofInstance : Particles2D = boofScene.instance()

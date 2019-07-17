@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Lazer Hum.wav-966a8a4ae441c64c819e7ccd8e62a533.sample"
+
+[deps]
+
+source_file="res://Sound/Effects/Lazer Hum.wav"
+dest_files=[ "res://.import/Lazer Hum.wav-966a8a4ae441c64c819e7ccd8e62a533.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,20 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform float hitLeft = 0.0;
-
-void fragment(){
-	vec4 c = texture(TEXTURE, UV);
-	
-	vec4 white = vec4(1,1,1,c.a);
-	
-	c = mix(c,white, hitLeft);
-	
-	COLOR = c;
-}"
+[ext_resource path="res://Art/Shaders/MonsterShader.shader" type="Shader" id=1]
 
 [resource]
-shader = SubResource( 1 )
+resource_local_to_scene = true
+shader = ExtResource( 1 )
 shader_param/hitLeft = 0.0

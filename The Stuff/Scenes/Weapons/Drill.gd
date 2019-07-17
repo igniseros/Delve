@@ -12,6 +12,7 @@ func _ready():
 
 func attemptAttack(dir):
 	if (ani.frame == 14):
+		$AttackSound.play()
 		ani.frame=0
 
 func _process(delta):

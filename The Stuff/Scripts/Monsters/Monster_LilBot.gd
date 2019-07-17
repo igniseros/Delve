@@ -1,5 +1,7 @@
 extends Node2D
 
+const MATERIAL = preload("res://Art/Shaders/MonsterMat.tres")
+
 onready var ani = $PhysicsBody/UpperBody
 onready var shotScene = load("res://Scenes/Effects/LilBotBoom.tscn")
 var attacking = false
@@ -8,13 +10,19 @@ var heIsInMe = false
 var Damage = 1
 
 func _ready():
+	var mat = get_node("PhysicsBody/UpperBody").get_material().duplicate(true)
+	get_node("PhysicsBody/UpperBody").set_material(mat)
+	
 	$PhysicsBody/AttackArea.connect("body_entered", self, "body_entered")
 	$PhysicsBody/AttackArea.connect("body_exited", self, "body_exited")
 	set_process(true)
 	
 
 func takeHit(shotFrom):
-	$PhysicsBody/Timer.start()
+	
+	if ($PhysicsBody/Timer.time_left == 0):
+		$PhysicsBody/HitSound.play()
+		$PhysicsBody/Timer.start()
 
 func _process(delta):
 	#tell the shader to turn him white based on how long ago he was hit
@@ -34,7 +42,7 @@ func lookAtPlayer(delta):
 	body.look_at($"/root/PlayerGlobal".PlayerPosition)
 	body.rotation_degrees -= 90
 	var newRot = body.rotation
-	var maxRotSpeed = PI/2.0 * delta
+	var maxRotSpeed = PI * delta
 	if (attacking): maxRotSpeed = PI/10.0 * delta
 	if (abs(newRot - oldRot) > maxRotSpeed):
 		body.rotation = oldRot
@@ -50,10 +58,14 @@ func body_exited(body):
 
 func attemptStartAttack():
 		if (ani.frame == 15):
+			
 			attacking = true
 			ani.frame = 0
 
 func attack():
+	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
+		$PhysicsBody/LazerHum.play()
+	
 	if (ani.frame == 7):
 		attacking = false
 		

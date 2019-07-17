@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Plate Hit 1.wav-2be5d76a522fce9c283e68f4f0905601.sample"
+
+[deps]
+
+source_file="res://Sound/Effects/Plate Hit 1.wav"
+dest_files=[ "res://.import/Plate Hit 1.wav-2be5d76a522fce9c283e68f4f0905601.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

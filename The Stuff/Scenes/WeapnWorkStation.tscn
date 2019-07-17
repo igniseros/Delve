@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Shaders/LevelMat.tres" type="Material" id=1]
 [ext_resource path="res://Scenes/Tiles/BlueTiles.tres" type="TileSet" id=2]
@@ -6,6 +6,154 @@
 [ext_resource path="res://Scenes/Monsters/Monster_LilBot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Gui/EnergyBar.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+onready var ani = $PhysicsBody/UpperBody
+onready var shotScene = load(\"res://Scenes/Effects/LilBotBoom.tscn\")
+var attacking = false
+var heIsInMe = false
+
+var Damage = 1
+
+func _ready():
+	$PhysicsBody/AttackArea.connect(\"body_entered\", self, \"body_entered\")
+	$PhysicsBody/AttackArea.connect(\"body_exited\", self, \"body_exited\")
+	set_process(true)
+	
+
+func takeHit(shotFrom):
+	if ($PhysicsBody/Timer.time_left == 0):
+		$PhysicsBody/HitSound.play()
+		$PhysicsBody/Timer.start()
+
+func _process(delta):
+	#tell the shader to turn him white based on how long ago he was hit
+	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param(\"hitLeft\", $PhysicsBody/Timer.time_left);
+	
+	if (heIsInMe):
+		attemptStartAttack()
+	
+	if (attacking):
+		attack()
+
+	lookAtPlayer(delta)
+
+func lookAtPlayer(delta):
+	var body = $PhysicsBody
+	var oldRot = body.rotation
+	body.look_at($\"/root/PlayerGlobal\".PlayerPosition)
+	body.rotation_degrees -= 90
+	var newRot = body.rotation
+	var maxRotSpeed = PI * delta
+	if (attacking): maxRotSpeed = PI/10.0 * delta
+	if (abs(newRot - oldRot) > maxRotSpeed):
+		body.rotation = oldRot
+		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot))
+
+func body_entered(body):
+	if (body.get_parent().name == \"Player\"):
+		heIsInMe = true
+
+func body_exited(body):
+	if (body.get_parent().name == \"Player\"):
+		heIsInMe =false
+
+func attemptStartAttack():
+		if (ani.frame == 15):
+			
+			attacking = true
+			ani.frame = 0
+
+func attack():
+	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
+		$PhysicsBody/LazerHum.play()
+	
+	if (ani.frame == 7):
+		attacking = false
+		
+		var shotI : Particles2D= shotScene.instance()
+		shotI.emitting = true
+		shotI.position.y += 35
+		shotI.rotation_degrees += 90
+		$PhysicsBody/UpperBody/ShotHere.add_child(shotI)
+		if (heIsInMe):
+			$\"/root/PlayerGlobal\".playerHit()"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+onready var ani = $PhysicsBody/UpperBody
+onready var shotScene = load(\"res://Scenes/Effects/LilBotBoom.tscn\")
+var attacking = false
+var heIsInMe = false
+
+var Damage = 1
+
+func _ready():
+	$PhysicsBody/AttackArea.connect(\"body_entered\", self, \"body_entered\")
+	$PhysicsBody/AttackArea.connect(\"body_exited\", self, \"body_exited\")
+	set_process(true)
+	
+
+func takeHit(shotFrom):
+	if ($PhysicsBody/Timer.time_left == 0):
+		$PhysicsBody/HitSound.play()
+		$PhysicsBody/Timer.start()
+
+func _process(delta):
+	#tell the shader to turn him white based on how long ago he was hit
+	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param(\"hitLeft\", $PhysicsBody/Timer.time_left);
+	
+	if (heIsInMe):
+		attemptStartAttack()
+	
+	if (attacking):
+		attack()
+
+	lookAtPlayer(delta)
+
+func lookAtPlayer(delta):
+	var body = $PhysicsBody
+	var oldRot = body.rotation
+	body.look_at($\"/root/PlayerGlobal\".PlayerPosition)
+	body.rotation_degrees -= 90
+	var newRot = body.rotation
+	var maxRotSpeed = PI * delta
+	if (attacking): maxRotSpeed = PI/10.0 * delta
+	if (abs(newRot - oldRot) > maxRotSpeed):
+		body.rotation = oldRot
+		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot))
+
+func body_entered(body):
+	if (body.get_parent().name == \"Player\"):
+		heIsInMe = true
+
+func body_exited(body):
+	if (body.get_parent().name == \"Player\"):
+		heIsInMe =false
+
+func attemptStartAttack():
+		if (ani.frame == 15):
+			
+			attacking = true
+			ani.frame = 0
+
+func attack():
+	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
+		$PhysicsBody/LazerHum.play()
+	
+	if (ani.frame == 7):
+		attacking = false
+		
+		var shotI : Particles2D= shotScene.instance()
+		shotI.emitting = true
+		shotI.position.y += 35
+		shotI.rotation_degrees += 90
+		$PhysicsBody/UpperBody/ShotHere.add_child(shotI)
+		if (heIsInMe):
+			$\"/root/PlayerGlobal\".playerHit()"
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -22,6 +170,7 @@ stretch = true
 size = Vector2( 1920, 1080 )
 handle_input_locally = false
 render_target_update_mode = 3
+audio_listener_enable_2d = true
 
 [node name="TileMap" type="TileMap" parent="VPC/VP"]
 scale = Vector2( 2, 2 )
@@ -45,6 +194,11 @@ position = Vector2( 916.192, -654.229 )
 
 [node name="Monster_LilBot" parent="VPC/VP" instance=ExtResource( 4 )]
 position = Vector2( 403.136, 296.475 )
+script = SubResource( 2 )
+
+[node name="Monster_LilBot2" parent="VPC/VP" instance=ExtResource( 4 )]
+position = Vector2( 566.442, 295.121 )
+script = SubResource( 3 )
 
 [node name="Player" parent="VPC/VP" instance=ExtResource( 5 )]
 position = Vector2( 156.99, 310.226 )

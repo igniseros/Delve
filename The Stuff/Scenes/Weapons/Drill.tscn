@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Weapons/Drill.gd" type="Script" id=1]
 [ext_resource path="res://Art/Equiptment/Drill/Drill1.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Art/Equiptment/Drill/Drill13.png" type="Texture" id=14]
 [ext_resource path="res://Art/Equiptment/Drill/Drill14.png" type="Texture" id=15]
 [ext_resource path="res://Art/Equiptment/Drill/Drill15.png" type="Texture" id=16]
+[ext_resource path="res://Sound/Effects/Paper Slide.wav" type="AudioStream" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,3 +42,7 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 24, 0 )
 shape = SubResource( 2 )
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -10.0
