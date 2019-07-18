@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Explosion1.png-472498b21db585f9869ce8afb6e7724f.stex"
+path="res://.import/Explosion12.png-8665d9c6d889e5d0c166d404e0a170a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Effects/Explosion 1/Explosion1.png"
-dest_files=[ "res://.import/Explosion1.png-472498b21db585f9869ce8afb6e7724f.stex" ]
+source_file="res://Art/Effects/Explosion 1/Explosion12.png"
+dest_files=[ "res://.import/Explosion12.png-8665d9c6d889e5d0c166d404e0a170a5.stex" ]
 
 [params]
 

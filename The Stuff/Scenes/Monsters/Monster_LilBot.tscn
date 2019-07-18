@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scripts/Monsters/Monster_LilBot.gd" type="Script" id=1]
 [ext_resource path="res://Sound/Effects/Wow Lazer.wav" type="AudioStream" id=2]
@@ -21,16 +21,30 @@
 [ext_resource path="res://Art/Monsters/LilBotShoot15.png" type="Texture" id=19]
 [ext_resource path="res://Art/Monsters/LilBotShoot16.png" type="Texture" id=20]
 [ext_resource path="res://Art/Effects/Lights/Flashlight.png" type="Texture" id=21]
-[ext_resource path="res://Art/Monsters/LilBotWalkt1.png" type="Texture" id=22]
-[ext_resource path="res://Art/Monsters/LilBotWalkt2.png" type="Texture" id=23]
-[ext_resource path="res://Art/Monsters/LilBotWalkt3.png" type="Texture" id=24]
-[ext_resource path="res://Art/Monsters/LilBotWalkt4.png" type="Texture" id=25]
-[ext_resource path="res://Art/Monsters/LilBotWalkt5.png" type="Texture" id=26]
-[ext_resource path="res://Art/Monsters/LilBotWalkt6.png" type="Texture" id=27]
-[ext_resource path="res://Art/Monsters/LilBotWalkt7.png" type="Texture" id=28]
-[ext_resource path="res://Art/Monsters/LilBotWalkt8.png" type="Texture" id=29]
-[ext_resource path="res://Art/Monsters/LilBotWalkt9.png" type="Texture" id=30]
-[ext_resource path="res://Art/Monsters/LilBotWalkt10.png" type="Texture" id=31]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion1.png" type="Texture" id=22]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion2.png" type="Texture" id=23]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion3.png" type="Texture" id=24]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion4.png" type="Texture" id=25]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion5.png" type="Texture" id=26]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion6.png" type="Texture" id=27]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion7.png" type="Texture" id=28]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion8.png" type="Texture" id=29]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion9.png" type="Texture" id=30]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion10.png" type="Texture" id=31]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion11.png" type="Texture" id=32]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion12.png" type="Texture" id=33]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion13.png" type="Texture" id=34]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion14.png" type="Texture" id=35]
+[ext_resource path="res://Art/Monsters/LilBotWalkt1.png" type="Texture" id=36]
+[ext_resource path="res://Art/Monsters/LilBotWalkt2.png" type="Texture" id=37]
+[ext_resource path="res://Art/Monsters/LilBotWalkt3.png" type="Texture" id=38]
+[ext_resource path="res://Art/Monsters/LilBotWalkt4.png" type="Texture" id=39]
+[ext_resource path="res://Art/Monsters/LilBotWalkt5.png" type="Texture" id=40]
+[ext_resource path="res://Art/Monsters/LilBotWalkt6.png" type="Texture" id=41]
+[ext_resource path="res://Art/Monsters/LilBotWalkt7.png" type="Texture" id=42]
+[ext_resource path="res://Art/Monsters/LilBotWalkt8.png" type="Texture" id=43]
+[ext_resource path="res://Art/Monsters/LilBotWalkt9.png" type="Texture" id=44]
+[ext_resource path="res://Art/Monsters/LilBotWalkt10.png" type="Texture" id=45]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -43,26 +57,36 @@ animations = [ {
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/Flashlight.png-c6d4be21687759c48bce1a0ee9c5e135.stex"
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="CanvasItemMaterial" id=3]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ null, ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), null ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "stop",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "go",
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8, 2 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="SegmentShape2D" id=6]
+[sub_resource type="SegmentShape2D" id=8]
 b = Vector2( 0, 70 )
 
 [node name="Monster_LilBot" type="Node2D"]
@@ -101,24 +125,31 @@ color = Color( 1, 0, 0.819608, 1 )
 [node name="ShotHere" type="Node2D" parent="PhysicsBody/UpperBody"]
 position = Vector2( -6, 7 )
 
+[node name="Explosion" type="AnimatedSprite" parent="PhysicsBody/UpperBody"]
+material = SubResource( 3 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 4 )
+frame = 15
+playing = true
+
 [node name="LowerBody" type="AnimatedSprite" parent="PhysicsBody"]
-frames = SubResource( 3 )
+frames = SubResource( 5 )
 animation = "stop"
 playing = true
 
 [node name="Torso" type="CollisionShape2D" parent="PhysicsBody"]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Head" type="CollisionShape2D" parent="PhysicsBody"]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="AttackArea" type="Area2D" parent="PhysicsBody"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsBody/AttackArea"]
 position = Vector2( -6, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="PhysicsBody"]
 one_shot = true
