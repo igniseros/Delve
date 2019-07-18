@@ -8,16 +8,17 @@ onready var shotScene = load("res://Scenes/Effects/LilBotBoom.tscn")
 var attacking = false
 var heIsInMe = false
 
+
 var Damage = 1
 
 func _ready():
 	var mat = get_node("PhysicsBody/UpperBody").get_material().duplicate(true)
 	get_node("PhysicsBody/UpperBody").set_material(mat)
-	
+
 	$PhysicsBody/AttackArea.connect("body_entered", self, "body_entered")
 	$PhysicsBody/AttackArea.connect("body_exited", self, "body_exited")
 	set_process(true)
-	
+
 
 func takeHit(shotFrom):
 	$PhysicsBody/Timer.start()
@@ -28,16 +29,19 @@ func takeHit(shotFrom):
 			die()
 
 func _process(delta):
+	#Pathfinding
+	#--------------------------
+	#--------------------------
 	#tell the shader to turn him white based on how long ago he was hit
 	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left)
-	
+
 	if (alive):
 		if (heIsInMe):
 			attemptStartAttack()
 		if (attacking):
 			attack()
 		lookAtPlayer(delta)
-	
+
 	if (not alive):
 		if ($PhysicsBody/UpperBody/Explosion.frame == 6):
 			$PhysicsBody/UpperBody.modulate = Color(.5,.5,.5,1)
@@ -64,17 +68,17 @@ func body_exited(body):
 
 func attemptStartAttack():
 		if (ani.frame == 15):
-			
+
 			attacking = true
 			ani.frame = 0
 
 func attack():
 	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
 		$PhysicsBody/LazerHum.play()
-	
+
 	if (ani.frame == 7):
 		attacking = false
-		
+
 		var shotI : Particles2D= shotScene.instance()
 		shotI.emitting = true
 		shotI.position.y += 35
@@ -88,4 +92,3 @@ func die():
 	$PhysicsBody/UpperBody/Explosion.frame = 0
 	$PhysicsBody/UpperBody/LeftEye.energy = 0
 	$PhysicsBody/UpperBody/RightEye.energy = 0
-	
