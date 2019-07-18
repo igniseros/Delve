@@ -14,7 +14,6 @@ signal player_hit
 #-----------------
 func playerHit():
 	Energy = Energy - 1
-	print(Energy)
 	emit_signal("player_hit")
 	playHitSound()
 

@@ -1,7 +1,5 @@
 extends Node2D
 
-const MATERIAL = preload("res://Art/Shaders/MonsterMat.tres")
-
 export var health = 3
 export var alive = true
 
@@ -31,7 +29,7 @@ func takeHit(shotFrom):
 
 func _process(delta):
 	#tell the shader to turn him white based on how long ago he was hit
-	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left);
+	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left)
 	
 	if (alive):
 		if (heIsInMe):
