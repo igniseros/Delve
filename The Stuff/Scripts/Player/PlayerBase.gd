@@ -24,6 +24,8 @@ var down = false
 var right = false
 
 func _ready():
+	ani.animation = "idle3"
+	player.connect("player_die", self, "die")
 	player.player = self
 	$BoofingTimer.stop()
 	$BoofTimer.start()
@@ -32,8 +34,9 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	movement()
-	attack()
+	if (player.alive):
+		movement()
+		attack()
 
 func movement():
 	var oldPos = player.PlayerPosition
@@ -160,3 +163,9 @@ func updateEquipment():
 		var newWepScn = load(ItemsGlobal.Arms[player.Equipment["Arm"]]) #load weapon scene
 		var newWepNode = newWepScn.instance() #instance weapon
 		weapon.add_child(newWepNode) #attach weapon to weapon node
+
+func die():
+	$PlayerBody/Lights.visible = false
+	ani.play("Die")
+	for child in $PlayerBody/Img/Weapon.get_children():
+		(child as Node2D).queue_free()

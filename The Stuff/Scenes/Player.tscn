@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Scripts/Player/PlayerBase.gd" type="Script" id=1]
 [ext_resource path="res://Sound/Effects/Squidge 2.wav" type="AudioStream" id=2]
@@ -10,39 +10,51 @@
 [ext_resource path="res://Art/Player/Idle/Player_Idle4.png" type="Texture" id=8]
 [ext_resource path="res://Art/Player/Walking Up Right/Player_Walking_Up_Right1.png" type="Texture" id=9]
 [ext_resource path="res://Art/Player/Walking Up Right/Player_Walking_Up_Right2.png" type="Texture" id=10]
-[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left1.png" type="Texture" id=11]
-[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left2.png" type="Texture" id=12]
-[ext_resource path="res://Art/Player/Idle 2/Player_Idle_2.png" type="Texture" id=13]
-[ext_resource path="res://Art/Player/Idle 2/Player_Idle_3.png" type="Texture" id=14]
-[ext_resource path="res://Art/Player/Idle 2/Player_Idle_4.png" type="Texture" id=15]
-[ext_resource path="res://Art/Player/Idle 2/Player_Idle_5.png" type="Texture" id=16]
-[ext_resource path="res://Art/Player/Idle 2/Player_Idle_6.png" type="Texture" id=17]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_3.png" type="Texture" id=18]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_4.png" type="Texture" id=19]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_5.png" type="Texture" id=20]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_6.png" type="Texture" id=21]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_7.png" type="Texture" id=22]
-[ext_resource path="res://Art/Player/Idle 3/Player_Idle_8.png" type="Texture" id=23]
-[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right1.png" type="Texture" id=24]
-[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right2.png" type="Texture" id=25]
-[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left1.png" type="Texture" id=26]
-[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left2.png" type="Texture" id=27]
-[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right1.png" type="Texture" id=28]
-[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right2.png" type="Texture" id=29]
-[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down1.png" type="Texture" id=30]
-[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down2.png" type="Texture" id=31]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode1.png" type="Texture" id=32]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode2.png" type="Texture" id=33]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode3.png" type="Texture" id=34]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode4.png" type="Texture" id=35]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode5.png" type="Texture" id=36]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode6.png" type="Texture" id=37]
-[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode7.png" type="Texture" id=38]
-[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left1.png" type="Texture" id=39]
-[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left2.png" type="Texture" id=40]
-[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up1.png" type="Texture" id=41]
-[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up2.png" type="Texture" id=42]
-[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=43]
+[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right1.png" type="Texture" id=11]
+[ext_resource path="res://Art/Player/Walking Right/Player_Walking_Right2.png" type="Texture" id=12]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode1.png" type="Texture" id=13]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode2.png" type="Texture" id=14]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode3.png" type="Texture" id=15]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode4.png" type="Texture" id=16]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode5.png" type="Texture" id=17]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode6.png" type="Texture" id=18]
+[ext_resource path="res://Art/Player/Idle Explode/Player_Idle_Explode7.png" type="Texture" id=19]
+[ext_resource path="res://Art/Player/Idle 2/Player_Idle_2.png" type="Texture" id=20]
+[ext_resource path="res://Art/Player/Idle 2/Player_Idle_3.png" type="Texture" id=21]
+[ext_resource path="res://Art/Player/Idle 2/Player_Idle_4.png" type="Texture" id=22]
+[ext_resource path="res://Art/Player/Idle 2/Player_Idle_5.png" type="Texture" id=23]
+[ext_resource path="res://Art/Player/Idle 2/Player_Idle_6.png" type="Texture" id=24]
+[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left1.png" type="Texture" id=25]
+[ext_resource path="res://Art/Player/Walking Down Left/Player_Walking_Down_Left2.png" type="Texture" id=26]
+[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down1.png" type="Texture" id=27]
+[ext_resource path="res://Art/Player/Walking Down/Player_Walking_Down2.png" type="Texture" id=28]
+[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right1.png" type="Texture" id=29]
+[ext_resource path="res://Art/Player/Walking Down Right/Player_Walking_Down_Right2.png" type="Texture" id=30]
+[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up1.png" type="Texture" id=31]
+[ext_resource path="res://Art/Player/Walking Up/Player_Walking_Up2.png" type="Texture" id=32]
+[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left1.png" type="Texture" id=33]
+[ext_resource path="res://Art/Player/Walking Up Left/Player_Walking_Up_Left2.png" type="Texture" id=34]
+[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left1.png" type="Texture" id=35]
+[ext_resource path="res://Art/Player/Walking Left/Player_Walking_Left2.png" type="Texture" id=36]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_3.png" type="Texture" id=37]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_4.png" type="Texture" id=38]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_5.png" type="Texture" id=39]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_6.png" type="Texture" id=40]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_7.png" type="Texture" id=41]
+[ext_resource path="res://Art/Player/Idle 3/Player_Idle_8.png" type="Texture" id=42]
+[ext_resource path="res://Art/Player/Die/Player_Die1.png" type="Texture" id=43]
+[ext_resource path="res://Art/Player/Die/Player_Die2.png" type="Texture" id=44]
+[ext_resource path="res://Art/Player/Die/Player_Die3.png" type="Texture" id=45]
+[ext_resource path="res://Art/Player/Die/Player_Die4.png" type="Texture" id=46]
+[ext_resource path="res://Art/Player/Die/Player_Die5.png" type="Texture" id=47]
+[ext_resource path="res://Art/Player/Die/Player_Die6.png" type="Texture" id=48]
+[ext_resource path="res://Art/Player/Die/Player_Die7.png" type="Texture" id=49]
+[ext_resource path="res://Art/Player/Die/Player_Die8.png" type="Texture" id=50]
+[ext_resource path="res://Art/Player/Die/Player_Die9.png" type="Texture" id=51]
+[ext_resource path="res://Art/Player/Die/Player_Die10.png" type="Texture" id=52]
+[ext_resource path="res://Art/Player/Die/Player_Die11.png" type="Texture" id=53]
+[ext_resource path="res://Art/Player/Die/Player_Die12.png" type="Texture" id=54]
+[ext_resource path="res://Art/Effects/Lights/Light1.png" type="Texture" id=55]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.1555
@@ -50,6 +62,11 @@ radius = 24.1555
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
 shader_param/amplitude = 1.0
+shader_param/alive = false
+shader_param/AmpMultiplyer_1 = 0.2
+shader_param/TimeMultiplyer_1 = 1.0
+shader_param/AmpMultiplyer_2 = 0.04
+shader_param/TimeMultiplyer_2 = 20.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -65,53 +82,58 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "WL",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "idle2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "idle3",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": true,
 "name": "WR",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "WDL",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "WDR",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "WD",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "IdleExplode",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "idle2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "WDL",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "WD",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "WDR",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "WU",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "WUL",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 42 ) ],
+"frames": [ ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": true,
-"name": "WU",
+"name": "WL",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "idle3",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ) ],
+"loop": false,
+"name": "Die",
+"speed": 8.0
 } ]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -142,19 +164,12 @@ material = SubResource( 2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "idle3"
+frame = 2
 playing = true
 
 [node name="Weapon" type="Node2D" parent="PlayerBody/Img"]
 show_behind_parent = true
 scale = Vector2( 0.5, 0.5 )
-
-[node name="SmallerLight" type="Light2D" parent="PlayerBody"]
-texture = ExtResource( 43 )
-color = Color( 0.380392, 0.647059, 0.992157, 1 )
-energy = 0.4
-shadow_enabled = true
-shadow_filter = 5
-shadow_filter_smooth = 3.0
 
 [node name="InteractionZone" type="Area2D" parent="PlayerBody"]
 visible = false
@@ -163,23 +178,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/InteractionZone"]
 shape = SubResource( 4 )
-
-[node name="BiggerLight" type="Light2D" parent="PlayerBody"]
-texture = ExtResource( 43 )
-texture_scale = 3.0
-color = Color( 0.388235, 0.356863, 0.988235, 1 )
-energy = 0.25
-range_height = 5.0
-shadow_enabled = true
-shadow_filter = 5
-shadow_filter_smooth = 12.0
-
-[node name="SmallestLight" type="Light2D" parent="PlayerBody"]
-texture = ExtResource( 43 )
-texture_scale = 0.1
-color = Color( 0.156863, 1, 0.745098, 1 )
-energy = 0.7
-shadow_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBody"]
 current = true
@@ -190,6 +188,33 @@ drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
+
+[node name="Lights" type="Node2D" parent="PlayerBody"]
+
+[node name="SmallerLight" type="Light2D" parent="PlayerBody/Lights"]
+texture = ExtResource( 55 )
+color = Color( 0.380392, 0.647059, 0.992157, 1 )
+energy = 0.4
+shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 3.0
+
+[node name="BiggerLight" type="Light2D" parent="PlayerBody/Lights"]
+texture = ExtResource( 55 )
+texture_scale = 3.0
+color = Color( 0.388235, 0.356863, 0.988235, 1 )
+energy = 0.25
+range_height = 5.0
+shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 12.0
+
+[node name="SmallestLight" type="Light2D" parent="PlayerBody/Lights"]
+texture = ExtResource( 55 )
+texture_scale = 0.1
+color = Color( 0.156863, 1, 0.745098, 1 )
+energy = 0.7
+shadow_enabled = true
 
 [node name="BoofTimer" type="Timer" parent="."]
 one_shot = true
