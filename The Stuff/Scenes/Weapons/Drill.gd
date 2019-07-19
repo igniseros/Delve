@@ -2,7 +2,7 @@ extends Node2D
 
 onready var ani = $AnimatedSprite
 var monsterCols = Array()
-
+var hit = false
 func _ready():
 	scale /= 2
 	position.x += 45
@@ -14,14 +14,17 @@ func attemptAttack(dir):
 	if (ani.frame == 14):
 		$AttackSound.play()
 		ani.frame=0
+		hit = false
 
 func _process(delta):
 	if (ani.frame == 2):
 		attack()
 
 func attack():
-	for col in monsterCols:
-		col.get_parent().takeHit(1)
+	if (not hit):
+		for col in monsterCols:
+			col.get_parent().takeHit(1)
+			hit = true
 
 func body_enterd(body):
 	if (str(body.get_parent().name).split('_')[0] == "Monster"):

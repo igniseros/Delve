@@ -1,159 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/Shaders/LevelMat.tres" type="Material" id=1]
-[ext_resource path="res://Scenes/Tiles/BlueTiles.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/Entities/StandLight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Monsters/Monster_LilBot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Monsters/Monster_LilBot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Tiles/BlueTiles.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/Entities/StandLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Gui/EnergyBar.tscn" type="PackedScene" id=6]
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Node2D
-
-onready var ani = $PhysicsBody/UpperBody
-onready var shotScene = load(\"res://Scenes/Effects/LilBotBoom.tscn\")
-var attacking = false
-var heIsInMe = false
-
-var Damage = 1
-
-func _ready():
-	$PhysicsBody/AttackArea.connect(\"body_entered\", self, \"body_entered\")
-	$PhysicsBody/AttackArea.connect(\"body_exited\", self, \"body_exited\")
-	set_process(true)
-	
-
-func takeHit(shotFrom):
-	if ($PhysicsBody/Timer.time_left == 0):
-		$PhysicsBody/HitSound.play()
-		$PhysicsBody/Timer.start()
-
-func _process(delta):
-	#tell the shader to turn him white based on how long ago he was hit
-	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param(\"hitLeft\", $PhysicsBody/Timer.time_left);
-	
-	if (heIsInMe):
-		attemptStartAttack()
-	
-	if (attacking):
-		attack()
-
-	lookAtPlayer(delta)
-
-func lookAtPlayer(delta):
-	var body = $PhysicsBody
-	var oldRot = body.rotation
-	body.look_at($\"/root/PlayerGlobal\".PlayerPosition)
-	body.rotation_degrees -= 90
-	var newRot = body.rotation
-	var maxRotSpeed = PI * delta
-	if (attacking): maxRotSpeed = PI/10.0 * delta
-	if (abs(newRot - oldRot) > maxRotSpeed):
-		body.rotation = oldRot
-		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot))
-
-func body_entered(body):
-	if (body.get_parent().name == \"Player\"):
-		heIsInMe = true
-
-func body_exited(body):
-	if (body.get_parent().name == \"Player\"):
-		heIsInMe =false
-
-func attemptStartAttack():
-		if (ani.frame == 15):
-			
-			attacking = true
-			ani.frame = 0
-
-func attack():
-	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
-		$PhysicsBody/LazerHum.play()
-	
-	if (ani.frame == 7):
-		attacking = false
-		
-		var shotI : Particles2D= shotScene.instance()
-		shotI.emitting = true
-		shotI.position.y += 35
-		shotI.rotation_degrees += 90
-		$PhysicsBody/UpperBody/ShotHere.add_child(shotI)
-		if (heIsInMe):
-			$\"/root/PlayerGlobal\".playerHit()"
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends Node2D
-
-onready var ani = $PhysicsBody/UpperBody
-onready var shotScene = load(\"res://Scenes/Effects/LilBotBoom.tscn\")
-var attacking = false
-var heIsInMe = false
-
-var Damage = 1
-
-func _ready():
-	$PhysicsBody/AttackArea.connect(\"body_entered\", self, \"body_entered\")
-	$PhysicsBody/AttackArea.connect(\"body_exited\", self, \"body_exited\")
-	set_process(true)
-	
-
-func takeHit(shotFrom):
-	if ($PhysicsBody/Timer.time_left == 0):
-		$PhysicsBody/HitSound.play()
-		$PhysicsBody/Timer.start()
-
-func _process(delta):
-	#tell the shader to turn him white based on how long ago he was hit
-	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param(\"hitLeft\", $PhysicsBody/Timer.time_left);
-	
-	if (heIsInMe):
-		attemptStartAttack()
-	
-	if (attacking):
-		attack()
-
-	lookAtPlayer(delta)
-
-func lookAtPlayer(delta):
-	var body = $PhysicsBody
-	var oldRot = body.rotation
-	body.look_at($\"/root/PlayerGlobal\".PlayerPosition)
-	body.rotation_degrees -= 90
-	var newRot = body.rotation
-	var maxRotSpeed = PI * delta
-	if (attacking): maxRotSpeed = PI/10.0 * delta
-	if (abs(newRot - oldRot) > maxRotSpeed):
-		body.rotation = oldRot
-		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot))
-
-func body_entered(body):
-	if (body.get_parent().name == \"Player\"):
-		heIsInMe = true
-
-func body_exited(body):
-	if (body.get_parent().name == \"Player\"):
-		heIsInMe =false
-
-func attemptStartAttack():
-		if (ani.frame == 15):
-			
-			attacking = true
-			ani.frame = 0
-
-func attack():
-	if (ani.frame == 6) and ($PhysicsBody/LazerHum.playing == false):
-		$PhysicsBody/LazerHum.play()
-	
-	if (ani.frame == 7):
-		attacking = false
-		
-		var shotI : Particles2D= shotScene.instance()
-		shotI.emitting = true
-		shotI.position.y += 35
-		shotI.rotation_degrees += 90
-		$PhysicsBody/UpperBody/ShotHere.add_child(shotI)
-		if (heIsInMe):
-			$\"/root/PlayerGlobal\".playerHit()"
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -172,10 +24,13 @@ handle_input_locally = false
 render_target_update_mode = 3
 audio_listener_enable_2d = true
 
+[node name="Monster_LilBot" parent="VPC/VP" instance=ExtResource( 2 )]
+position = Vector2( 417.978, 300 )
+
 [node name="TileMap" type="TileMap" parent="VPC/VP"]
 scale = Vector2( 2, 2 )
 z_index = -5
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -983034, 0, 0, -983033, 0, 0, -983032, 0, 0, -983031, 0, 0, -983030, 0, 0, -983029, 0, 0, -983028, 0, 0, -983027, 0, 0, -983026, 0, 0, -983025, 0, 0, -983024, 0, 0, -983023, 0, 0, -983022, 0, 0, -983021, 0, 0, -983020, 0, 0, -983019, 0, 0, -917498, 0, 0, -917497, 0, 0, -917496, 5, 0, -917495, 5, 0, -917494, 5, 0, -917493, 5, 0, -917492, 5, 0, -917491, 5, 0, -917490, 5, 0, -917489, 5, 0, -917488, 5, 0, -917487, 5, 0, -917486, 5, 0, -917485, 5, 0, -917484, 0, 0, -917483, 0, 0, -851962, 0, 0, -851961, 9, 0, -851960, 0, 0, -851959, 0, 0, -851958, 0, 0, -851957, 0, 0, -851956, 0, 0, -851955, 0, 0, -851954, 0, 0, -851953, 0, 0, -851952, 0, 0, -851951, 0, 0, -851950, 0, 0, -851949, 0, 0, -851948, 13, 0, -851947, 0, 0, -786426, 0, 0, -786425, 9, 0, -786424, 0, 0, -786423, 0, 0, -786422, 0, 0, -786421, 0, 0, -786420, 0, 0, -786419, 0, 0, -786418, 0, 0, -786417, 0, 0, -786416, 0, 0, -786415, 0, 0, -786414, 0, 0, -786413, 0, 0, -786412, 13, 0, -786411, 0, 0, -720890, 0, 0, -720889, 9, 0, -720888, 0, 0, -720887, 0, 0, -720886, 0, 0, -720885, 0, 0, -720884, 0, 0, -720883, 0, 0, -720882, 0, 0, -720881, 0, 0, -720880, 0, 0, -720879, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 13, 0, -720875, 0, 0, -655354, 0, 0, -655353, 9, 0, -655352, 0, 0, -655351, 0, 0, -655350, 0, 0, -655349, 0, 0, -655348, 0, 0, -655347, 0, 0, -655346, 0, 0, -655345, 0, 0, -655344, 0, 0, -655343, 0, 0, -655342, 0, 0, -655341, 0, 0, -655340, 13, 0, -655339, 0, 0, -589818, 0, 0, -589817, 9, 0, -589816, 0, 0, -589815, 0, 0, -589814, 0, 0, -589813, 0, 0, -589812, 0, 0, -589811, 0, 0, -589810, 0, 0, -589809, 0, 0, -589808, 0, 0, -589807, 0, 0, -589806, 0, 0, -589805, 0, 0, -589804, 13, 0, -589803, 0, 0, -524282, 0, 0, -524281, 9, 0, -524280, 0, 0, -524279, 0, 0, -524278, 0, 0, -524277, 0, 0, -524276, 0, 0, -524275, 0, 0, -524274, 0, 0, -524273, 0, 0, -524272, 0, 0, -524271, 0, 0, -524270, 0, 0, -524269, 0, 0, -524268, 13, 0, -524267, 0, 0, -458746, 0, 0, -458745, 9, 0, -458744, 0, 0, -458743, 0, 0, -458742, 0, 0, -458741, 0, 0, -458740, 0, 0, -458739, 0, 0, -458738, 0, 0, -458737, 0, 0, -458736, 0, 0, -458735, 0, 0, -458734, 0, 0, -458733, 0, 0, -458732, 13, 0, -458731, 0, 0, -393210, 0, 0, -393209, 9, 0, -393208, 0, 0, -393207, 0, 0, -393206, 0, 0, -393205, 0, 0, -393204, 0, 0, -393203, 0, 0, -393202, 0, 0, -393201, 0, 0, -393200, 0, 0, -393199, 0, 0, -393198, 0, 0, -393197, 0, 0, -393196, 13, 0, -393195, 0, 0, -327674, 0, 0, -327673, 9, 0, -327672, 21, 0, -327671, 20, 0, -327670, 20, 0, -327669, 19, 0, -327668, 0, 0, -327667, 0, 0, -327666, 0, 0, -327665, 0, 0, -327664, 20, 0, -327663, 19, 0, -327662, 20, 0, -327661, 21, 0, -327660, 13, 0, -327659, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 9, 0, -262136, 23, 0, -262135, 20, 0, -262134, 20, 0, -262133, 20, 0, -262132, 20, 0, -262131, 0, 0, -262130, 0, 0, -262129, 19, 0, -262128, 20, 0, -262127, 20, 0, -262126, 20, 0, -262125, 23, 0, -262124, 13, 0, -262123, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 9, 0, -196600, 23, 0, -196599, 19, 0, -196598, 20, 0, -196597, 20, 0, -196596, 19, 0, -196595, 20, 0, -196594, 20, 0, -196593, 20, 0, -196592, 20, 0, -196591, 19, 0, -196590, 20, 0, -196589, 23, 0, -196588, 13, 0, -196587, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 9, 0, -131064, 21, 0, -131063, 22, 0, -131062, 22, 0, -131061, 22, 0, -131060, 21, 0, -131059, 20, 0, -131058, 20, 0, -131057, 21, 0, -131056, 22, 0, -131055, 22, 0, -131054, 22, 0, -131053, 21, 0, -131052, 13, 0, -131051, 0, 0, -65524, 23, 0, -65523, 19, 0, -65522, 20, 0, -65521, 23, 0, 12, 23, 0, 13, 19, 0, 14, 19, 0, 15, 23, 0, 65536, 21, 0, 65537, 22, 0, 65538, 22, 0, 65539, 22, 0, 65540, 22, 0, 65541, 21, 0, 65548, 23, 0, 65549, 20, 0, 65550, 19, 0, 65551, 23, 0, 131072, 23, 0, 131073, 19, 0, 131074, 19, 0, 131075, 19, 0, 131076, 19, 0, 131077, 21, 0, 131078, 22, 0, 131079, 22, 0, 131080, 22, 0, 131081, 22, 0, 131082, 21, 0, 131084, 23, 0, 131085, 19, 0, 131086, 20, 0, 131087, 23, 0, 196608, 23, 0, 196609, 19, 0, 196610, 19, 0, 196611, 19, 0, 196612, 19, 0, 196613, 19, 0, 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 23, 0, 196620, 23, 0, 196621, 19, 0, 196622, 19, 0, 196623, 23, 0, 262144, 23, 0, 262145, 19, 0, 262146, 19, 0, 262147, 19, 0, 262148, 19, 0, 262149, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 23, 0, 262155, 21, 0, 262156, 21, 0, 262157, 19, 0, 262158, 19, 0, 262159, 21, 0, 262160, 21, 0, 327680, 23, 0, 327681, 19, 0, 327682, 19, 0, 327683, 19, 0, 327684, 19, 0, 327685, 19, 0, 327686, 19, 0, 327687, 19, 0, 327688, 19, 0, 327689, 19, 0, 327690, 23, 0, 327691, 23, 0, 327692, 19, 0, 327693, 19, 0, 327694, 19, 0, 327695, 19, 0, 327696, 23, 0, 393216, 23, 0, 393217, 19, 0, 393218, 19, 0, 393219, 19, 0, 393220, 19, 0, 393221, 21, 0, 393222, 22, 0, 393223, 21, 0, 393224, 19, 0, 393225, 19, 0, 393226, 23, 0, 393227, 23, 0, 393228, 19, 0, 393229, 19, 0, 393230, 19, 0, 393231, 19, 0, 393232, 23, 0, 458752, 21, 0, 458753, 22, 0, 458754, 22, 0, 458755, 22, 0, 458756, 22, 0, 458757, 21, 0, 458759, 23, 0, 458760, 19, 0, 458761, 19, 0, 458762, 21, 0, 458763, 21, 0, 458764, 19, 0, 458765, 19, 0, 458766, 19, 0, 458767, 19, 0, 458768, 23, 0, 524295, 23, 0, 524296, 19, 0, 524297, 19, 0, 524298, 19, 0, 524299, 19, 0, 524300, 19, 0, 524301, 19, 0, 524302, 19, 0, 524303, 19, 0, 524304, 23, 0, 589831, 23, 0, 589832, 19, 0, 589833, 19, 0, 589834, 19, 0, 589835, 19, 0, 589836, 19, 0, 589837, 19, 0, 589838, 19, 0, 589839, 19, 0, 589840, 23, 0, 655367, 21, 0, 655368, 22, 0, 655369, 22, 0, 655370, 22, 0, 655371, 22, 0, 655372, 22, 0, 655373, 22, 0, 655374, 22, 0, 655375, 22, 0, 655376, 21, 0 )
@@ -183,22 +38,14 @@ tile_data = PoolIntArray( -983034, 0, 0, -983033, 0, 0, -983032, 0, 0, -983031, 
 [node name="CanvasModulate" type="CanvasModulate" parent="VPC/VP"]
 color = Color( 0, 0, 0, 1 )
 
-[node name="StandLight2" parent="VPC/VP" instance=ExtResource( 3 )]
+[node name="StandLight2" parent="VPC/VP" instance=ExtResource( 4 )]
 position = Vector2( 195.731, 188.937 )
 
-[node name="StandLight3" parent="VPC/VP" instance=ExtResource( 3 )]
+[node name="StandLight3" parent="VPC/VP" instance=ExtResource( 4 )]
 position = Vector2( 857.409, 539.515 )
 
-[node name="StandLight4" parent="VPC/VP" instance=ExtResource( 3 )]
+[node name="StandLight4" parent="VPC/VP" instance=ExtResource( 4 )]
 position = Vector2( 916.192, -654.229 )
-
-[node name="Monster_LilBot" parent="VPC/VP" instance=ExtResource( 4 )]
-position = Vector2( 403.136, 296.475 )
-script = SubResource( 2 )
-
-[node name="Monster_LilBot2" parent="VPC/VP" instance=ExtResource( 4 )]
-position = Vector2( 566.442, 295.121 )
-script = SubResource( 3 )
 
 [node name="Player" parent="VPC/VP" instance=ExtResource( 5 )]
 position = Vector2( 156.99, 310.226 )

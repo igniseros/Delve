@@ -10,6 +10,9 @@ var path #path monster will follow initial left undefined
 
 const MATERIAL = preload("res://Art/Shaders/MonsterMat.tres")
 
+export var health = 3
+export var alive = true
+
 onready var ani = $PhysicsBody/UpperBody
 onready var shotScene = load("res://Scenes/Effects/LilBotBoom.tscn")
 var attacking = false
@@ -28,10 +31,12 @@ func _ready():
 	
 
 func takeHit(shotFrom):
-	
-	if ($PhysicsBody/Timer.time_left == 0):
-		$PhysicsBody/HitSound.play()
-		$PhysicsBody/Timer.start()
+	$PhysicsBody/Timer.start()
+	$PhysicsBody/HitSound.play()
+	if (alive):
+		health -= $"/root/Items".ArmData[shotFrom]["DMG"]
+		if (health <= 0):
+			die()
 
 func _process(delta):
 	#Pathfinding 
@@ -40,25 +45,28 @@ func _process(delta):
 	#tell the shader to turn him white based on how long ago he was hit
 	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left);
 	
-	if (heIsInMe):
-		attemptStartAttack()
+	if (alive):
+		if (heIsInMe):
+			attemptStartAttack()
+		if (attacking):
+			attack()
+		lookAtPlayer(delta)
 	
-	if (attacking):
-		attack()
-
-	lookAtPlayer(delta)
+	if (not alive):
+		if ($PhysicsBody/UpperBody/Explosion.frame == 6):
+			$PhysicsBody/UpperBody.modulate = Color(.5,.5,.5,1)
 
 func lookAtPlayer(delta):
 	var body = $PhysicsBody
 	var oldRot = body.rotation
-	body.look_at($"/root/PlayerGlobal".PlayerPosition)
-	body.rotation_degrees -= 90
+	body.look_at($"/root/PlayerGlobal".PlayerPosition) #look at him
+	body.rotation_degrees -= 90 #but correctly
 	var newRot = body.rotation
-	var maxRotSpeed = PI * delta
-	if (attacking): maxRotSpeed = PI/10.0 * delta
-	if (abs(newRot - oldRot) > maxRotSpeed):
+	var maxRotSpeed = PI * delta #speedlimit
+	if (attacking): maxRotSpeed = PI/10.0 * delta #even slower if aiming
+	if (abs(newRot - oldRot) > maxRotSpeed):  #dont go to fast
 		body.rotation = oldRot
-		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot))
+		body.rotation += -maxRotSpeed * ((oldRot - newRot)/abs(oldRot-newRot)) #you went too fast, ajust
 
 func body_entered(body):
 	if (body.get_parent().name == "Player"):
@@ -88,3 +96,10 @@ func attack():
 		$PhysicsBody/UpperBody/ShotHere.add_child(shotI)
 		if (heIsInMe):
 			$"/root/PlayerGlobal".playerHit()
+
+func die():
+	alive = false
+	$PhysicsBody/UpperBody/Explosion.frame = 0
+	$PhysicsBody/UpperBody/LeftEye.energy = 0
+	$PhysicsBody/UpperBody/RightEye.energy = 0
+	
