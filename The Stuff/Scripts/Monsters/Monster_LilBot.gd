@@ -1,11 +1,20 @@
 extends Node2D
 
+
+#Pathfinding 
+#--------------------------
+const MOVE_SPEED = 96
+const POINT_RADIUS = 5  #How close monster must be to point in path before moving to next one
+var path #path monster will follow initial left undefined
+#--------------------------
+
 const MATERIAL = preload("res://Art/Shaders/MonsterMat.tres")
 
 onready var ani = $PhysicsBody/UpperBody
 onready var shotScene = load("res://Scenes/Effects/LilBotBoom.tscn")
 var attacking = false
 var heIsInMe = false
+
 
 var Damage = 1
 
@@ -25,6 +34,9 @@ func takeHit(shotFrom):
 		$PhysicsBody/Timer.start()
 
 func _process(delta):
+	#Pathfinding 
+	#--------------------------
+	#--------------------------
 	#tell the shader to turn him white based on how long ago he was hit
 	($PhysicsBody/UpperBody.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left);
 	
