@@ -1,7 +1,7 @@
 extends Node
 
 var player : Node2D
-var Energy = 2
+var Energy = 6
 var WalkSpeed = 100
 var PlayerPosition = Vector2(0,0)
 var boofFactor = 10;

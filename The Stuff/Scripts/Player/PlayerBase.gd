@@ -120,7 +120,6 @@ func _input(event):
 			recentShootKey ="left"
 		if event.pressed and event.scancode == KEY_RIGHT:
 			recentShootKey = "right"
-	
 
 func attack():
 	#------

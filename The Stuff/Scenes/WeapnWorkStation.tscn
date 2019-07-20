@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Shaders/LevelMat.tres" type="Material" id=1]
 [ext_resource path="res://Scenes/Monsters/Monster_LilBot.tscn" type="PackedScene" id=2]
@@ -7,7 +7,12 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Gui/EnergyBar.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 80, 432, 80, 144, 304, 144, 304, 208, 784, 528, 784, 336, 848, 336, 848, -144, 592, -144, 592, -336, 1264, -816, 1200, -336, 528, -336, 528, -816, 1264, -336, 1200, -144, 944, -144, 944, 336, 1008, 336, 1008, 624, 304, 368, 304, 432, 624, 208, 528, 368, 624, 528, 528, 624 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6 ), PoolIntArray( 7, 8, 9, 10, 11 ), PoolIntArray( 9, 12, 13, 10 ), PoolIntArray( 10, 14, 11 ), PoolIntArray( 11, 15, 16 ), PoolIntArray( 7, 11, 16 ), PoolIntArray( 6, 7, 16, 17 ), PoolIntArray( 17, 18, 19, 4 ), PoolIntArray( 20, 21, 0 ), PoolIntArray( 20, 0, 3, 22 ), PoolIntArray( 23, 20, 22 ), PoolIntArray( 23, 22, 24, 25 ), PoolIntArray( 19, 25, 24, 4 ), PoolIntArray( 17, 4, 6 ) ]
+outlines = [ PoolVector2Array( 80, 432, 304, 432, 304, 368, 528, 368, 528, 624, 1008, 624, 1008, 336, 944, 336, 944, -144, 1200, -144, 1200, -336, 1264, -336, 1264, -816, 528, -816, 528, -336, 592, -336, 592, -144, 848, -144, 848, 336, 784, 336, 784, 528, 624, 528, 624, 208, 304, 208, 304, 144, 80, 144 ) ]
+
+[sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
 [node name="Root" type="Node2D"]
@@ -26,6 +31,15 @@ audio_listener_enable_2d = true
 
 [node name="Monster_LilBot" parent="VPC/VP" instance=ExtResource( 2 )]
 position = Vector2( 417.978, 300 )
+
+[node name="Monster_LilBot2" parent="VPC/VP" instance=ExtResource( 2 )]
+position = Vector2( 900, 300 )
+
+[node name="Monster_LilBot3" parent="VPC/VP" instance=ExtResource( 2 )]
+position = Vector2( 900, 500 )
+
+[node name="Monster_LilBot4" parent="VPC/VP" instance=ExtResource( 2 )]
+position = Vector2( 900, 0 )
 
 [node name="TileMap" type="TileMap" parent="VPC/VP"]
 scale = Vector2( 2, 2 )
@@ -50,6 +64,12 @@ position = Vector2( 916.192, -654.229 )
 [node name="Player" parent="VPC/VP" instance=ExtResource( 5 )]
 position = Vector2( 156.99, 310.226 )
 
+[node name="Navigation2D" type="Navigation2D" parent="VPC/VP"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="VPC/VP/Navigation2D"]
+visible = false
+navpoly = SubResource( 1 )
+
 [node name="EnergyBar" parent="." instance=ExtResource( 6 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 32, 32 )

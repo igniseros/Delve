@@ -81,30 +81,34 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 8, 2 )
+extents = Vector2( 16, 4 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 4, 4 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="SegmentShape2D" id=8]
-b = Vector2( 0, 70 )
+b = Vector2( 0, 140 )
 
 [node name="Monster_LilBot" type="Node2D"]
-scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="PhysicsBody" type="KinematicBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="LazerHum" type="AudioStreamPlayer2D" parent="PhysicsBody"]
 stream = ExtResource( 2 )
 volume_db = -15.0
 max_distance = 750.0
+area_mask = 65544
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="PhysicsBody"]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [node name="UpperBody" type="AnimatedSprite" parent="PhysicsBody"]
 material = ExtResource( 4 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "shoot"
 frame = 15
@@ -133,19 +137,20 @@ frame = 15
 playing = true
 
 [node name="LowerBody" type="AnimatedSprite" parent="PhysicsBody"]
+scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
 animation = "stop"
 playing = true
 
 [node name="Torso" type="CollisionShape2D" parent="PhysicsBody"]
-visible = false
 shape = SubResource( 6 )
 
 [node name="Head" type="CollisionShape2D" parent="PhysicsBody"]
-visible = false
 shape = SubResource( 7 )
 
 [node name="AttackArea" type="Area2D" parent="PhysicsBody"]
+collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsBody/AttackArea"]
 position = Vector2( -6, 0 )

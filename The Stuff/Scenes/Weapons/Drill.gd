@@ -1,5 +1,6 @@
 extends Node2D
 
+const ID = 1
 onready var ani = $AnimatedSprite
 var monsterCols = Array()
 var hit = false
@@ -23,14 +24,13 @@ func _process(delta):
 func attack():
 	if (not hit):
 		for col in monsterCols:
-			col.get_parent().takeHit(1)
+			(col.get_parent() as Monster).take_hit(ID)
 			hit = true
 
 func body_enterd(body):
 	if (str(body.get_parent().name).split('_')[0] == "Monster"):
 		monsterCols.append(body)
 		
-
 func body_exited(body):
 	if (str(body.get_parent().name).split('_')[0] == "Monster"):
 		var i = 0
