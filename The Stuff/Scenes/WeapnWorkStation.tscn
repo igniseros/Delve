@@ -33,13 +33,7 @@ audio_listener_enable_2d = true
 position = Vector2( 417.978, 300 )
 
 [node name="Monster_LilBot2" parent="VPC/VP" instance=ExtResource( 2 )]
-position = Vector2( 900, 300 )
-
-[node name="Monster_LilBot3" parent="VPC/VP" instance=ExtResource( 2 )]
-position = Vector2( 900, 500 )
-
-[node name="Monster_LilBot4" parent="VPC/VP" instance=ExtResource( 2 )]
-position = Vector2( 900, 0 )
+position = Vector2( 550, 500 )
 
 [node name="TileMap" type="TileMap" parent="VPC/VP"]
 scale = Vector2( 2, 2 )

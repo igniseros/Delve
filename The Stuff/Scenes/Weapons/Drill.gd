@@ -28,11 +28,11 @@ func attack():
 			hit = true
 
 func body_enterd(body):
-	if (str(body.get_parent().name).split('_')[0] == "Monster"):
+	if (body.get_parent() is Monster):
 		monsterCols.append(body)
 		
 func body_exited(body):
-	if (str(body.get_parent().name).split('_')[0] == "Monster"):
+	if (body.get_parent() is Monster):
 		var i = 0
 		for mon in monsterCols:
 			if (mon.get_parent().name == body.get_parent().name):

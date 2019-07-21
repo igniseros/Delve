@@ -9,6 +9,7 @@ onready var body = $PhysicsBody
 
 onready var shotScene = load("res://Scenes/Effects/LilBotBoom.tscn")
 
+var last_frame = 0
 var attacking = false
 var player_is_in_range = false
 var walking_backwards = false
@@ -75,6 +76,7 @@ func die():
 	$PhysicsBody/UpperBody/Explosion.frame = 0
 	$PhysicsBody/UpperBody/LeftEye.energy = 0
 	$PhysicsBody/UpperBody/RightEye.energy = 0
+	$PhysicsBody/LowerBody.animation = "stop"
 	body.set_collision_layer_bit(3,false)
 
 func move(delta):
@@ -84,11 +86,18 @@ func move(delta):
 	#turns you and returns whether or not you are looking the right way based on threshhold
 	var facing_correctly = look_on_path(max_rotation, -PI/2.0, deg2rad(3)) 
 	if (facing_correctly):
+		$PhysicsBody/LowerBody.animation = "go"
 		walk()
+	else:
+		$PhysicsBody/LowerBody.animation = "stop"
 
 func walk():
+	var current_frame = $PhysicsBody/LowerBody.frame
 	var walk_vector := get_direction_on_path()
 	var distance_from_goal = get_distance_to_next_path_point()
+	
+	if ((last_frame == 6) or (last_frame == 1)) and ((current_frame == 7) or (current_frame == 2)):
+		$PhysicsBody/WalkSound.play()
 	
 	if (is_next_path_point_player()):
 		#move back and forward
@@ -109,4 +118,5 @@ func walk():
 	if (attacking):
 		walk_vector *= attack_walking_multiplyer
 	
+	last_frame = $PhysicsBody/LowerBody.frame
 	body.move_and_slide(walk_vector * walk_speed)
