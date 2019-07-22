@@ -7,7 +7,8 @@ var health : float
 var walk_speed : float
 
 var path_ref : Node2D
-var path_to_player : PoolVector2Array
+var path : PoolVector2Array
+var nav_goal : Vector2
 
 func _init(_health = 1, _walk_speed = 50 , _alive = true).():
 	health = _health
@@ -19,27 +20,27 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	path_to_player = get_path_to_player()
-	path_to_player.remove(0)
+	path = get_nav_path()
+	path.remove(0)
 	process(delta)
 	if (alive and PlayerGlobal.alive):
 		move(delta)
 
-func get_path_to_player() -> PoolVector2Array: 
+func get_nav_path() -> PoolVector2Array: 
 	return get_parent().find_node("Navigation2D").get_simple_path(
-				path_ref.global_position,PlayerGlobal.PlayerPosition) #get path
+				path_ref.global_position,nav_goal) #get path
 
 func get_direction_on_path() -> Vector2: 
-	return (path_to_player[0] - path_ref.global_position).normalized()
+	return (path[0] - path_ref.global_position).normalized()
 
 func get_distance_to_next_path_point() -> float:
-	return path_ref.global_position.distance_to(path_to_player[0])
+	return path_ref.global_position.distance_to(path[0])
 
 func get_direction_to_player() -> Vector2:
 	return (PlayerGlobal.PlayerPosition - path_ref.global_position).normalized()
 
-func is_next_path_point_player() -> bool:
-	return path_to_player.size() == 1
+func is_next_path_point_goal() -> bool:
+	return path.size() == 1
 
 func take_hit(weapon):
 	if (alive):

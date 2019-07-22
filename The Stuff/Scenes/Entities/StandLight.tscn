@@ -29,7 +29,7 @@ scale = Vector2( 2, 2 )
 z_index = 5
 frames = SubResource( 1 )
 animation = "New Anim"
-frame = 7
+frame = 21
 playing = true
 
 [node name="Med" type="Light2D" parent="."]
@@ -55,4 +55,4 @@ color = Color( 1, 0.27451, 0.105882, 1 )
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 5
-shadow_filter_smooth = 26.0
+shadow_filter_smooth = 50.0

@@ -24,6 +24,7 @@ func ready():
 	$PhysicsBody/AttackArea.connect("body_exited", self, "body_exited")
 
 func process(delta):
+	nav_goal = PlayerGlobal.PlayerPosition
 	#tell the shader to turn him white based on how long ago he was hit
 	(ani.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left)
 	
@@ -99,7 +100,7 @@ func walk():
 	if ((last_frame == 6) or (last_frame == 1)) and ((current_frame == 7) or (current_frame == 2)):
 		$PhysicsBody/WalkSound.play()
 	
-	if (is_next_path_point_player()):
+	if (is_next_path_point_goal()):
 		#move back and forward
 		if (distance_from_goal < 90):
 			walking_backwards = true

@@ -1,0 +1,250 @@
+[gd_resource type="TileSet" load_steps=30 format=2]
+
+[ext_resource path="res://Art/Floor One/Tiles/Door.png" type="Texture" id=1]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Bottom.png" type="Texture" id=2]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(3)1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(3)2.png" type="Texture" id=4]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_Wall_Connector_Four.png" type="Texture" id=5]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_Wall_Horizontal.png" type="Texture" id=6]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_Wall_Verticle.png" type="Texture" id=7]
+[ext_resource path="res://Art/Floor One/Tiles/Tree_Tile.png" type="Texture" id=8]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Horz.png" type="Texture" id=9]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Left.png" type="Texture" id=10]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Right.png" type="Texture" id=11]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Top.png" type="Texture" id=12]
+[ext_resource path="res://Art/Floor One/Tiles/Door_Vert.png" type="Texture" id=13]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile.png" type="Texture" id=14]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown1.png" type="Texture" id=15]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown2.png" type="Texture" id=16]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown3.png" type="Texture" id=17]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown4.png" type="Texture" id=18]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(2)1.png" type="Texture" id=19]
+[ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(2)2.png" type="Texture" id=20]
+
+[sub_resource type="AnimatedTexture" id=3]
+frames = 2
+fps = 2.0
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="OccluderPolygon2D" id=9]
+polygon = PoolVector2Array( 9, -16, 9, -10, 10, -10, 10, -9, 16, -9, 16, 9, 10, 9, 10, 10, 9, 10, 9, 16, -9, 16, -9, 10, -10, 10, -10, 9, -16, 9, -16, -9, -10, -9, -10, -10, -9, -10, -9, -16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 11 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( -16, -9, -16, 9, 16, 9, 16, -9 )
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -9, -16, -9, 16, 9, 16, 9, -16, -9, -16 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 28.0
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 4
+fps = 2.0
+frame_0/texture = ExtResource( 15 )
+frame_1/texture = ExtResource( 16 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 17 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 18 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=2]
+frames = 2
+fps = 2.0
+frame_0/texture = ExtResource( 19 )
+frame_1/texture = ExtResource( 20 )
+frame_1/delay_sec = 0.0
+
+[resource]
+0/name = "Door"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 16, 16 )
+0/navigation_offset = Vector2( 16, 16 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Door_Bottom"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 16, 16 )
+1/navigation_offset = Vector2( 16, 16 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Door_Horz"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 16, 16 )
+2/navigation_offset = Vector2( 16, 16 )
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Door_Left"
+3/texture = ExtResource( 10 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 16, 16 )
+3/navigation_offset = Vector2( 16, 16 )
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Door_Right"
+4/texture = ExtResource( 11 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 16, 16 )
+4/navigation_offset = Vector2( 16, 16 )
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Door_Top"
+5/texture = ExtResource( 12 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 16, 16 )
+5/navigation_offset = Vector2( 16, 16 )
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Door_Vert"
+6/texture = ExtResource( 13 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 16, 16 )
+6/navigation_offset = Vector2( 16, 16 )
+6/shapes = [  ]
+6/z_index = 0
+7/name = "Floor_Tile"
+7/texture = ExtResource( 14 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 16, 16 )
+7/navigation_offset = Vector2( 16, 16 )
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Floor_Tile_OverGrown"
+8/texture = SubResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 16, 16 )
+8/navigation_offset = Vector2( 16, 16 )
+8/shapes = [  ]
+8/z_index = 0
+9/name = "Floor_Tile_OverGrown_(2)"
+9/texture = SubResource( 2 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 16, 16 )
+9/navigation_offset = Vector2( 16, 16 )
+9/shapes = [  ]
+9/z_index = 0
+10/name = "Floor_Tile_OverGrown_(3)"
+10/texture = SubResource( 3 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 16, 16 )
+10/navigation_offset = Vector2( 16, 16 )
+10/shapes = [  ]
+10/z_index = 0
+11/name = "Floor_Tile_Wall_Connector_Four"
+11/texture = ExtResource( 5 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 16, 16 )
+11/occluder = SubResource( 9 )
+11/navigation_offset = Vector2( 16, 16 )
+11/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
+11/z_index = 0
+12/name = "Floor_Tile_Wall_Horizontal"
+12/texture = ExtResource( 6 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 16, 16 )
+12/occluder = SubResource( 6 )
+12/navigation_offset = Vector2( 16, 16 )
+12/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
+12/z_index = 0
+13/name = "Floor_Tile_Wall_Verticle"
+13/texture = ExtResource( 7 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 16, 16 )
+13/occluder = SubResource( 10 )
+13/navigation_offset = Vector2( 16, 16 )
+13/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
+13/z_index = 0
+14/name = "Tree_Tile"
+14/texture = ExtResource( 8 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 96, 96 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 48, 48 )
+14/navigation_offset = Vector2( 48, 48 )
+14/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 48, 48 )
+} ]
+14/z_index = 0
