@@ -21,21 +21,21 @@
 [ext_resource path="res://Art/Monsters/LilBotShoot14.png" type="Texture" id=19]
 [ext_resource path="res://Art/Monsters/LilBotShoot15.png" type="Texture" id=20]
 [ext_resource path="res://Art/Monsters/LilBotShoot16.png" type="Texture" id=21]
-[ext_resource path="res://Art/Effects/Lights/Flashlight.png" type="Texture" id=22]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion1.png" type="Texture" id=23]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion2.png" type="Texture" id=24]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion3.png" type="Texture" id=25]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion4.png" type="Texture" id=26]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion5.png" type="Texture" id=27]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion6.png" type="Texture" id=28]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion7.png" type="Texture" id=29]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion8.png" type="Texture" id=30]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion9.png" type="Texture" id=31]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion10.png" type="Texture" id=32]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion11.png" type="Texture" id=33]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion12.png" type="Texture" id=34]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion13.png" type="Texture" id=35]
-[ext_resource path="res://Art/Effects/Explosion 1/Explosion14.png" type="Texture" id=36]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion1.png" type="Texture" id=22]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion2.png" type="Texture" id=23]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion3.png" type="Texture" id=24]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion4.png" type="Texture" id=25]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion5.png" type="Texture" id=26]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion6.png" type="Texture" id=27]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion7.png" type="Texture" id=28]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion8.png" type="Texture" id=29]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion9.png" type="Texture" id=30]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion10.png" type="Texture" id=31]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion11.png" type="Texture" id=32]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion12.png" type="Texture" id=33]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion13.png" type="Texture" id=34]
+[ext_resource path="res://Art/Effects/Explosion 1/Explosion14.png" type="Texture" id=35]
+[ext_resource path="res://Art/Effects/Lights/Flashlight.png" type="Texture" id=36]
 [ext_resource path="res://Art/Monsters/LilBotWalkt1.png" type="Texture" id=37]
 [ext_resource path="res://Art/Monsters/LilBotWalkt2.png" type="Texture" id=38]
 [ext_resource path="res://Art/Monsters/LilBotWalkt3.png" type="Texture" id=39]
@@ -55,18 +55,18 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/Flashlight.png-c6d4be21687759c48bce1a0ee9c5e135.stex"
-
 [sub_resource type="CanvasItemMaterial" id=3]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ null, ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), null ],
+"frames": [ null, ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), null ],
 "loop": false,
 "name": "default",
 "speed": 10.0
 } ]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/Flashlight.png-c6d4be21687759c48bce1a0ee9c5e135.stex"
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -101,7 +101,7 @@ collision_mask = 8
 stream = ExtResource( 2 )
 volume_db = -15.0
 max_distance = 750.0
-area_mask = 65544
+area_mask = 8
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="PhysicsBody"]
 stream = ExtResource( 3 )
@@ -121,18 +121,6 @@ animation = "shoot"
 frame = 15
 playing = true
 
-[node name="LeftEye" type="Light2D" parent="PhysicsBody/UpperBody"]
-texture = ExtResource( 22 )
-offset = Vector2( -2, 52 )
-texture_scale = 0.2
-color = Color( 1, 0, 0.819608, 1 )
-
-[node name="RightEye" type="Light2D" parent="PhysicsBody/UpperBody"]
-texture = SubResource( 2 )
-offset = Vector2( 2, 52 )
-texture_scale = 0.2
-color = Color( 1, 0, 0.819608, 1 )
-
 [node name="ShotHere" type="Node2D" parent="PhysicsBody/UpperBody"]
 position = Vector2( -6, 7 )
 
@@ -142,6 +130,28 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 4 )
 frame = 15
 playing = true
+
+[node name="LeftEye" type="Light2D" parent="PhysicsBody/UpperBody"]
+texture = ExtResource( 36 )
+offset = Vector2( -2, 52 )
+texture_scale = 0.2
+color = Color( 1, 0, 0.470588, 1 )
+energy = 0.5
+shadow_enabled = true
+shadow_gradient_length = 2.0
+shadow_filter = 5
+shadow_filter_smooth = 30.0
+
+[node name="RightEye" type="Light2D" parent="PhysicsBody/UpperBody"]
+texture = SubResource( 2 )
+offset = Vector2( 2, 52 )
+texture_scale = 0.2
+color = Color( 1, 0, 0.470588, 1 )
+energy = 0.5
+shadow_enabled = true
+shadow_gradient_length = 2.0
+shadow_filter = 5
+shadow_filter_smooth = 30.0
 
 [node name="LowerBody" type="AnimatedSprite" parent="PhysicsBody"]
 scale = Vector2( 2, 2 )
@@ -156,8 +166,9 @@ shape = SubResource( 6 )
 shape = SubResource( 7 )
 
 [node name="AttackArea" type="Area2D" parent="PhysicsBody"]
+editor/display_folded = true
 collision_layer = 0
-collision_mask = 32
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsBody/AttackArea"]
 position = Vector2( -6, 0 )
@@ -167,4 +178,13 @@ shape = SubResource( 8 )
 one_shot = true
 
 [node name="AttackAnim" type="Timer" parent="PhysicsBody"]
+one_shot = true
+
+[node name="SearchRay" type="RayCast2D" parent="PhysicsBody"]
+enabled = true
+cast_to = Vector2( 250, 0 )
+collision_mask = 33
+
+[node name="RememberPlayer" type="Timer" parent="PhysicsBody"]
+wait_time = 2.0
 one_shot = true

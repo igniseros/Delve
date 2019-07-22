@@ -29,7 +29,7 @@ scale = Vector2( 2, 2 )
 z_index = 5
 frames = SubResource( 1 )
 animation = "New Anim"
-frame = 21
+frame = 14
 playing = true
 
 [node name="Med" type="Light2D" parent="."]
@@ -38,8 +38,9 @@ texture_scale = 5.0
 color = Color( 0.996078, 0.470588, 0.286275, 1 )
 energy = 0.7
 shadow_enabled = true
+shadow_gradient_length = 2.0
 shadow_filter = 5
-shadow_filter_smooth = 15.0
+shadow_filter_smooth = 30.0
 
 [node name="Small" type="Light2D" parent="."]
 texture = ExtResource( 12 )
@@ -54,5 +55,6 @@ texture_scale = 5.0
 color = Color( 1, 0.27451, 0.105882, 1 )
 energy = 0.5
 shadow_enabled = true
+shadow_gradient_length = 2.0
 shadow_filter = 5
-shadow_filter_smooth = 50.0
+shadow_filter_smooth = 30.0

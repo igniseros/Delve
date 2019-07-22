@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Monster
 
+var rotational_offset : float
+
 var alive : bool
 var health : float
 var walk_speed : float
@@ -10,14 +12,19 @@ var path_ref : Node2D
 var path : PoolVector2Array
 var nav_goal : Vector2
 
-func _init(_health = 1, _walk_speed = 50 , _alive = true).():
+var search_ray : RayCast2D
+var seeing_player : float = false
+
+func _init(_health = 1, _walk_speed = 50 ,_rotational_offset = 0, _alive = true).():
 	health = _health
 	walk_speed = _walk_speed
+	rotational_offset = _rotational_offset
 	alive = _alive
 
 func _ready():
 	ready()
 	set_process(true)
+	rotational_offset -= global_rotation
 
 func _process(delta):
 	path = get_nav_path()
@@ -42,6 +49,14 @@ func get_direction_to_player() -> Vector2:
 func is_next_path_point_goal() -> bool:
 	return path.size() == 1
 
+func search_for_player():
+	search_ray.global_rotation = get_direction_to_player().angle()
+	if (search_ray.is_colliding()):
+		if (search_ray.get_collider().name == "PlayerBody"):
+			seeing_player = true
+			return
+	seeing_player = false
+
 func take_hit(weapon):
 	if (alive):
 		health -= $"/root/Items".ArmData[weapon]["DMG"]
@@ -49,7 +64,7 @@ func take_hit(weapon):
 			die()
 	hit_taken(weapon)
 
-func look_on_path(max_rotation = 0 ,rotational_offset = 0, correcness_threshold = 0) -> bool:
+func look_on_path(max_rotation = 0 , correcness_threshold = 0) -> bool:
 	var old_rotation = path_ref.rotation #get old rotation
 	var goal_rotation = get_direction_on_path().angle() + rotational_offset #get goal rotation
 	old_rotation = fmod(old_rotation, 2*PI) #keep in 2pi range

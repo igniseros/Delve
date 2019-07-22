@@ -3,7 +3,6 @@ extends Monster
 var rotation_speed_idle = PI/2.0
 var rotation_speed_attacking = PI/4.0
 
-
 onready var ani = $PhysicsBody/UpperBody
 onready var body = $PhysicsBody
 
@@ -13,30 +12,52 @@ var last_frame = 0
 var attacking = false
 var player_is_in_range = false
 var walking_backwards = false
+
 var attack_walking_multiplyer = .6
 
-func _init().(3,75):
+func _init().(3,75, -PI/2.0):
 	pass
 
 func ready():
 	path_ref = $PhysicsBody
+	search_ray = $PhysicsBody/SearchRay
 	$PhysicsBody/AttackArea.connect("body_entered", self, "body_entered")
 	$PhysicsBody/AttackArea.connect("body_exited", self, "body_exited")
 
 func process(delta):
-	nav_goal = PlayerGlobal.PlayerPosition
 	#tell the shader to turn him white based on how long ago he was hit
 	(ani.material as ShaderMaterial).set_shader_param("hitLeft", $PhysicsBody/Timer.time_left)
-	
+	#do the thing if alive and player too
 	if (alive and PlayerGlobal.alive):
 		if (player_is_in_range):
 			attemptStartAttack()
 		if (attacking):
 			attack()
-
+		search_for_player()
+	#set the die things
 	if (not alive):
 		if ($PhysicsBody/UpperBody/Explosion.frame == 6):
 			ani.modulate = Color(.5,.5,.5,1)
+	
+	#reset memory timer, he forget player if not see him
+	if (seeing_player):
+		$PhysicsBody/RememberPlayer.start()
+	
+	#set nav_goal to player if seeing him, if not go home
+	if ($PhysicsBody/RememberPlayer.time_left > 0):
+		nav_goal = PlayerGlobal.PlayerPosition
+	else:
+		nav_goal = global_position
+	
+	if ($PhysicsBody/RememberPlayer.time_left > 0) and (alive):
+		$PhysicsBody/UpperBody/LeftEye.energy = .5
+		$PhysicsBody/UpperBody/RightEye.energy = .5
+	else:
+		$PhysicsBody/UpperBody/LeftEye.energy = 0
+		$PhysicsBody/UpperBody/RightEye.energy = 0
+	
+	if (not PlayerGlobal.alive):
+		$PhysicsBody/LowerBody.animation = "stop"
 
 func body_entered(body):
 	if (body.get_parent().name == "Player"):
@@ -85,22 +106,24 @@ func move(delta):
 	if (attacking) : max_rotation = rotation_speed_attacking * delta #if attacking switch to attack rotation speed
 	#look_on_path(max_rotation, rotational_offset, correctness_threshhold)
 	#turns you and returns whether or not you are looking the right way based on threshhold
-	var facing_correctly = look_on_path(max_rotation, -PI/2.0, deg2rad(3)) 
+	var facing_correctly = look_on_path(max_rotation, deg2rad(3)) 
 	if (facing_correctly):
-		$PhysicsBody/LowerBody.animation = "go"
-		walk()
+		walk(delta)
 	else:
 		$PhysicsBody/LowerBody.animation = "stop"
 
-func walk():
+func walk(delta):
 	var current_frame = $PhysicsBody/LowerBody.frame
 	var walk_vector := get_direction_on_path()
 	var distance_from_goal = get_distance_to_next_path_point()
+	var temp_walk_speed = walk_speed
+	
+	$PhysicsBody/LowerBody.animation = "go"
 	
 	if ((last_frame == 6) or (last_frame == 1)) and ((current_frame == 7) or (current_frame == 2)):
 		$PhysicsBody/WalkSound.play()
 	
-	if (is_next_path_point_goal()):
+	if ((is_next_path_point_goal()) and (nav_goal == PlayerGlobal.PlayerPosition)):
 		#move back and forward
 		if (distance_from_goal < 90):
 			walking_backwards = true
@@ -115,9 +138,14 @@ func walk():
 	if (walking_backwards):
 		walk_vector *= -1
 	
+	if ((distance_from_goal < walk_speed * delta) and  (not walking_backwards)):
+		temp_walk_speed = distance_from_goal / delta
 	
 	if (attacking):
 		walk_vector *= attack_walking_multiplyer
 	
+	if ((temp_walk_speed == 0) or (walk_vector == Vector2(0,0))):
+		$PhysicsBody/LowerBody.animation = "stop"
+	
 	last_frame = $PhysicsBody/LowerBody.frame
-	body.move_and_slide(walk_vector * walk_speed)
+	body.move_and_slide(walk_vector * temp_walk_speed)
