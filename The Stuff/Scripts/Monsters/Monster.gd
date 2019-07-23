@@ -25,6 +25,7 @@ func _ready():
 	ready()
 	set_process(true)
 	rotational_offset -= global_rotation
+	path = get_nav_path()
 
 func _process(delta):
 	path = get_nav_path()
@@ -62,7 +63,8 @@ func take_hit(weapon):
 		health -= $"/root/Items".ArmData[weapon]["DMG"]
 		if (health <= 0):
 			die()
-	hit_taken(weapon)
+			alive = false
+		hit_taken(weapon)
 
 func look_on_path(max_rotation = 0 , correcness_threshold = 0) -> bool:
 	var old_rotation = path_ref.rotation #get old rotation

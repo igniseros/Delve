@@ -1,0 +1,158 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://Scripts/Monsters/Monster_Stabber.gd" type="Script" id=1]
+[ext_resource path="res://Art/Shaders/MonsterMat.tres" type="Material" id=2]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Idle/Stabber_Idle1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die1.png" type="Texture" id=4]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die2.png" type="Texture" id=5]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die3.png" type="Texture" id=6]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die4.png" type="Texture" id=7]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die5.png" type="Texture" id=8]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die6.png" type="Texture" id=9]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die7.png" type="Texture" id=10]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die8.png" type="Texture" id=11]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die9.png" type="Texture" id=12]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die10.png" type="Texture" id=13]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die11.png" type="Texture" id=14]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die12.png" type="Texture" id=15]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die13.png" type="Texture" id=16]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die14.png" type="Texture" id=17]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Die/Stabber_Die15.png" type="Texture" id=18]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking1.png" type="Texture" id=19]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking2.png" type="Texture" id=20]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking3.png" type="Texture" id=21]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking4.png" type="Texture" id=22]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking5.png" type="Texture" id=23]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking6.png" type="Texture" id=24]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking7.png" type="Texture" id=25]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking8.png" type="Texture" id=26]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking9.png" type="Texture" id=27]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking10.png" type="Texture" id=28]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking11.png" type="Texture" id=29]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking12.png" type="Texture" id=30]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking13.png" type="Texture" id=31]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking14.png" type="Texture" id=32]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking15.png" type="Texture" id=33]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking16.png" type="Texture" id=34]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking17.png" type="Texture" id=35]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking18.png" type="Texture" id=36]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking19.png" type="Texture" id=37]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking20.png" type="Texture" id=38]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking21.png" type="Texture" id=39]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking22.png" type="Texture" id=40]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking23.png" type="Texture" id=41]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Attacking/Stabber_Attacking24.png" type="Texture" id=42]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Rotate/Stabber_Rotate1.png" type="Texture" id=43]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Rotate/Stabber_Rotate2.png" type="Texture" id=44]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Rotate/Stabber_Rotate3.png" type="Texture" id=45]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Rotate/Stabber_Rotate4.png" type="Texture" id=46]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Walking/Stabber_Walk1.png" type="Texture" id=47]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Walking/Stabber_Walk2.png" type="Texture" id=48]
+[ext_resource path="res://Art/Floor One/Monsters/Stabber/Walking/Stabber_Walk3.png" type="Texture" id=49]
+[ext_resource path="res://Art/Effects/Lights/star.png" type="Texture" id=50]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "die",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": false,
+"name": "attacking",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": false,
+"name": "rotation_ends",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.0
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( -28, 0 )
+b = Vector2( 32, 20 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( -28, 0 )
+b = Vector2( 32, -20 )
+
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( -28, 0 )
+b = Vector2( 28, 0 )
+
+[node name="Monster_Stabber" type="Node2D"]
+scale = Vector2( 2, 2 )
+z_index = 25
+script = ExtResource( 1 )
+
+[node name="PhysicsBody" type="KinematicBody2D" parent="."]
+collision_layer = 8
+collision_mask = 9
+
+[node name="Sprite" type="AnimatedSprite" parent="PhysicsBody"]
+material = ExtResource( 2 )
+position = Vector2( 40, 0 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="Remember Player" type="Timer" parent="PhysicsBody"]
+wait_time = 30.0
+one_shot = true
+
+[node name="SinceHit" type="Timer" parent="PhysicsBody"]
+one_shot = true
+
+[node name="Shape" type="CollisionShape2D" parent="PhysicsBody"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="HitPlayer" type="Area2D" parent="PhysicsBody"]
+position = Vector2( 40, 0 )
+collision_layer = 0
+collision_mask = 32
+
+[node name="Lower Segment" type="CollisionShape2D" parent="PhysicsBody/HitPlayer"]
+visible = false
+shape = SubResource( 3 )
+
+[node name="Upper Segment" type="CollisionShape2D" parent="PhysicsBody/HitPlayer"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="Attack Player" type="Area2D" parent="PhysicsBody"]
+position = Vector2( 40, 0 )
+collision_layer = 0
+collision_mask = 32
+
+[node name="Attack Zone" type="CollisionShape2D" parent="PhysicsBody/Attack Player"]
+visible = false
+shape = SubResource( 5 )
+
+[node name="Search Ray" type="RayCast2D" parent="PhysicsBody"]
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 33
+
+[node name="PlayerLight" type="Light2D" parent="PhysicsBody"]
+texture = ExtResource( 50 )
+color = Color( 0.639216, 1, 0, 1 )
+energy = 0.25
+shadow_enabled = true
+shadow_gradient_length = 2.0
+shadow_filter = 5
+shadow_filter_smooth = 30.0

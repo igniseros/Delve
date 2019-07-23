@@ -15,7 +15,7 @@ var walking_backwards = false
 
 var attack_walking_multiplyer = .6
 
-func _init().(3,75, -PI/2.0):
+func _init().(1,75, -PI/2.0):
 	pass
 
 func ready():
@@ -36,8 +36,8 @@ func process(delta):
 		search_for_player()
 	#set the die things
 	if (not alive):
-		if ($PhysicsBody/UpperBody/Explosion.frame == 6):
-			ani.modulate = Color(.5,.5,.5,1)
+		if ($PhysicsBody/Explosion.frame == 6):
+			ani.modulate = Color(0,0,0,1)
 	
 	#reset memory timer, he forget player if not see him
 	if (seeing_player):
@@ -95,11 +95,12 @@ func hit_taken(weapon):
 
 func die():
 	alive = false
-	$PhysicsBody/UpperBody/Explosion.frame = 0
+	$PhysicsBody/Explosion.frame = 0
 	$PhysicsBody/UpperBody/LeftEye.energy = 0
 	$PhysicsBody/UpperBody/RightEye.energy = 0
 	$PhysicsBody/LowerBody.animation = "stop"
 	body.set_collision_layer_bit(3,false)
+	body.set_collision_mask_bit(3,false)
 
 func move(delta):
 	var max_rotation = rotation_speed_idle *delta #set idle rotation speed

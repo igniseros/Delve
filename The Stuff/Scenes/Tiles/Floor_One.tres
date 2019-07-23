@@ -25,56 +25,56 @@
 [ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(2)1.png" type="Texture" id=23]
 [ext_resource path="res://Art/Floor One/Tiles/Floor_Tile_OverGrown_(2)2.png" type="Texture" id=24]
 
-[sub_resource type="AnimatedTexture" id=3]
+[sub_resource type="AnimatedTexture" id=1]
 frames = 2
 fps = 2.0
 frame_0/texture = ExtResource( 3 )
 frame_1/texture = ExtResource( 4 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="OccluderPolygon2D" id=9]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 9, -16, 9, -10, 10, -10, 10, -9, 16, -9, 16, 9, 10, 9, 10, 10, 9, 10, 9, 16, -9, 16, -9, 10, -10, 10, -10, 9, -16, 9, -16, -9, -10, -9, -10, -10, -9, -10, -9, -16 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11, 16 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 16, 11 )
 
-[sub_resource type="OccluderPolygon2D" id=23]
+[sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( -16, -9, -16, 9, 16, 9, 16, -9 )
 
-[sub_resource type="OccluderPolygon2D" id=10]
+[sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -9, -16, -9, 16, 9, 16, 9, -16, -9, -16 )
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 24.0
 
-[sub_resource type="OccluderPolygon2D" id=13]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -9, -9, -9, 16, 9, 16, 9, 10, 10, 10, 10, 9, 16, 9, 16, -9 )
 
-[sub_resource type="ConvexPolygonShape2D" id=24]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( -10, -10, -10, 16, 10, 16, 10, 10, 16, 10, 16, -10 )
 
-[sub_resource type="OccluderPolygon2D" id=18]
+[sub_resource type="OccluderPolygon2D" id=10]
 polygon = PoolVector2Array( -9, -16, -9, 9, 16, 9, 16, -9, 10, -9, 10, -10, 9, -10, 9, -16 )
 
-[sub_resource type="ConvexPolygonShape2D" id=25]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 points = PoolVector2Array( -10, -16, -10, 10, 16, 10, 16, -10, 10, -10, 10, -16 )
 
-[sub_resource type="OccluderPolygon2D" id=19]
+[sub_resource type="OccluderPolygon2D" id=12]
 polygon = PoolVector2Array( -16, -9, -16, 9, -10, 9, -10, 10, -9, 10, -9, 16, 9, 16, 9, -9 )
 
-[sub_resource type="ConvexPolygonShape2D" id=16]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( -16, -10, -16, 10, -10, 10, -10, 16, 10, 16, 10, -10 )
 
-[sub_resource type="OccluderPolygon2D" id=20]
+[sub_resource type="OccluderPolygon2D" id=14]
 polygon = PoolVector2Array( -16, -9, -16, 9, 9, 9, 9, -16, -9, -16, -9, -10, -10, -10, -10, -9 )
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
+[sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( -10, -16, -10, -10, -16, -10, -16, 10, 10, 10, 10, -16 )
 
-[sub_resource type="AnimatedTexture" id=1]
+[sub_resource type="AnimatedTexture" id=16]
 frames = 4
 fps = 2.0
 frame_0/texture = ExtResource( 19 )
@@ -85,7 +85,7 @@ frame_2/delay_sec = 0.0
 frame_3/texture = ExtResource( 22 )
 frame_3/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=17]
 frames = 2
 fps = 2.0
 frame_0/texture = ExtResource( 23 )
@@ -174,7 +174,7 @@ frame_1/delay_sec = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "Floor_Tile_OverGrown"
-8/texture = SubResource( 1 )
+8/texture = SubResource( 16 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 32, 32 )
@@ -184,7 +184,7 @@ frame_1/delay_sec = 0.0
 8/shapes = [  ]
 8/z_index = 0
 9/name = "Floor_Tile_OverGrown_(2)"
-9/texture = SubResource( 2 )
+9/texture = SubResource( 17 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 32, 32 )
@@ -194,7 +194,7 @@ frame_1/delay_sec = 0.0
 9/shapes = [  ]
 9/z_index = 0
 10/name = "Floor_Tile_OverGrown_(3)"
-10/texture = SubResource( 3 )
+10/texture = SubResource( 1 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 32, 32 )
@@ -210,19 +210,19 @@ frame_1/delay_sec = 0.0
 11/region = Rect2( 0, 0, 32, 32 )
 11/tile_mode = 0
 11/occluder_offset = Vector2( 16, 16 )
-11/occluder = SubResource( 9 )
+11/occluder = SubResource( 2 )
 11/navigation_offset = Vector2( 16, 16 )
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 21 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 22 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 11/z_index = 0
@@ -233,13 +233,13 @@ frame_1/delay_sec = 0.0
 12/region = Rect2( 0, 0, 32, 32 )
 12/tile_mode = 0
 12/occluder_offset = Vector2( 16, 16 )
-12/occluder = SubResource( 23 )
+12/occluder = SubResource( 5 )
 12/navigation_offset = Vector2( 16, 16 )
 12/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 22 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 12/z_index = 0
@@ -250,13 +250,13 @@ frame_1/delay_sec = 0.0
 13/region = Rect2( 0, 0, 32, 32 )
 13/tile_mode = 0
 13/occluder_offset = Vector2( 16, 16 )
-13/occluder = SubResource( 10 )
+13/occluder = SubResource( 6 )
 13/navigation_offset = Vector2( 16, 16 )
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 21 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 13/z_index = 0
@@ -283,13 +283,13 @@ frame_1/delay_sec = 0.0
 15/region = Rect2( 0, 0, 32, 32 )
 15/tile_mode = 0
 15/occluder_offset = Vector2( 16, 16 )
-15/occluder = SubResource( 13 )
+15/occluder = SubResource( 8 )
 15/navigation_offset = Vector2( 16, 16 )
 15/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 24 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 15/z_index = 0
@@ -300,13 +300,13 @@ frame_1/delay_sec = 0.0
 16/region = Rect2( 0, 0, 32, 32 )
 16/tile_mode = 0
 16/occluder_offset = Vector2( 16, 16 )
-16/occluder = SubResource( 18 )
+16/occluder = SubResource( 10 )
 16/navigation_offset = Vector2( 16, 16 )
 16/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 25 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 16/z_index = 0
@@ -317,13 +317,13 @@ frame_1/delay_sec = 0.0
 17/region = Rect2( 0, 0, 32, 32 )
 17/tile_mode = 0
 17/occluder_offset = Vector2( 16, 16 )
-17/occluder = SubResource( 19 )
+17/occluder = SubResource( 12 )
 17/navigation_offset = Vector2( 16, 16 )
 17/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 17/z_index = 0
@@ -334,13 +334,13 @@ frame_1/delay_sec = 0.0
 18/region = Rect2( 0, 0, 32, 32 )
 18/tile_mode = 0
 18/occluder_offset = Vector2( 16, 16 )
-18/occluder = SubResource( 20 )
+18/occluder = SubResource( 14 )
 18/navigation_offset = Vector2( 16, 16 )
 18/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 18/z_index = 0
